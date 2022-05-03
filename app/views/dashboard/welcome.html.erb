@@ -1,0 +1,95 @@
+<% content_for :title, "Trummi - Be your true self" %>
+
+<div class="well" id="well">
+	<div class="panel" id="Welcome">
+    <div class="w_t-wr">
+      <p class="w-st">Trummi</p>
+      <p class="w-ti">Be your <strong>true</strong> self</p>
+    </div>
+		
+    <div class="wo-next" align="center">
+      <i class="fa fa-chevron-down fa-3x bounce"></i>
+    </div>
+	</div>
+
+  <div class="panel d-flex" id="Self-love">
+    <div class="about_img">
+      <%= image_tag('self_love.png') %>
+    </div>
+
+    <div class="about_section">
+      <p class="w-st">Be yourself</p>
+      <p class="w-ti">Social media has become a place where users feel pressured to be perfect. We know perfect doesn't exist, that's why you're encouraged to be the real you here at Trummi. By upholding the spirit of honesty, positivity and transparency, we can work together towards creating a new normal for what social media should be.</p>
+    </div>
+  </div>
+
+  <div class="panel d-flex" id="Tags">
+    <div class="about_section">
+      <p class="w-st">Meet others just like you</p>
+      <p class="w-ti">Use tags to describe yourself, your interests and ideas, or anything important to you. You will only be visible to anyone using the same tags as you so feel free to be yourself!</p>
+
+      <%= image_tag('tags.png', class: 'p-tags') %>
+    </div>
+    
+    <div class="about_img">
+      <div class="tag_img_wr">
+        <%= image_tag('tags_2_cooking.png', class: 'p-cooking') %>
+        <%= image_tag('tags_3_pottery2.png', class: 'p-pottery') %>
+        <%= image_tag('tags_8_hiking3.png', class: 'p-hiking') %>
+        <%= image_tag('tags_9_guitar.png', class: 'p-guitar') %>
+        <%= image_tag('tags_9_parachute.png', class: 'p-parachute') %>
+      </div>
+    </div>
+  </div>
+
+  <div  class="panel d-flex" id="Kid-safe">
+    <div class="about_section">
+      <p class="w-st">A safe place for kids</p>
+      <p class="w-ti">Trummi is committed to providing a safe place for kids by ensuring their profile is only visible to other kids.  Kids are free to be kids!</p>
+    </div>
+    
+    <div class="about_img">
+      <%= image_tag('kid_safety.png') %>
+    </div>
+  </div>
+
+  <div  class="panel d-flex" id="React">
+    <div class="about_img">
+      <%= image_tag('reactions_background.png', class: 'rbk') %>
+      <%= image_tag('r1.png', class: 'r1') %>
+      <%= image_tag('r2.png', class: 'r2') %>
+      <%= image_tag('r3.png', class: 'r3') %>
+      <%= image_tag('r4.png', class: 'r4') %>
+    </div>
+    
+    <div class="about_section">
+      <p class="w-st">With more ways to interact</p>
+      <p class="w-ti">React with memes! Use popular memes to show how you really feel. You're no longer limited to likes and dislikes.</p>
+      <%= image_tag('reaction_clip.png') %>
+    </div>
+  </div>
+  
+	<div class="panel getstarted d-flex">
+    <div class="about_img d-flex align-items-center justify-content-center" id="Img_l">
+      <%= image_tag('avatars.gif', class: 'hero_sp') %>
+    </div>
+    
+    <div class="about_section d-flex align-items-center justify-content-center">
+      <p class="w-st">Ready to meet others like you?</p>
+      
+      <% if user_signed_in? && current_user.profile != nil %>
+        <%= link_to "Get started", posts_path, class: 'post-btn' %>
+      <% elsif user_signed_in? && current_user.profile == nil %>
+        <%= link_to "Get started", new_profile_path, class: 'post-btn' %>
+      <% else %>
+        <%= link_to "Get started", new_user_session_path, class: 'post-btn' %>
+      <% end %>
+    </div>
+
+    <div class="about_img d-flex align-items-center justify-content-center" id="Img_r">
+      <%= image_tag('avatars2.gif', class: 'hero_sp') %>
+    </div>
+	</div>
+</div>
+
+<%= javascript_pack_tag 'welcome' %>

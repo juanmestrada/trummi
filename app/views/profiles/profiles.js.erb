@@ -1,0 +1,126 @@
+// console.log("coming from edit.js.erb")
+
+// $(document).ready(function(){
+	
+//   	var leftPaddle = $('.leftPaddle');
+//   	var	rightPaddle = $('.rightPaddle');
+	
+// 	// get items dimensions
+// 	var itemsLength = $('.col-pe').length;
+// 	var itemSize = $('.col-pe').outerWidth(true);
+// 	// get some relevant size for the paddle triggering point
+// 	var paddleMargin = 20; 
+  
+//   	// get wrapper width
+// 	var getscrollWrapperSize = function() {
+// 		return $('.test-pe').outerWidth();
+// 	}
+
+// 	var menuWrapperSize = getscrollWrapperSize();
+
+// 	// the wrapper is responsive
+// 	$(window).on('resize', function() {
+// 		menuWrapperSize = getscrollWrapperSize();
+// 	});
+
+//   	// size of the visible part of the menu is equal as the wrapper size 
+// 	var menuVisibleSize = menuWrapperSize;
+
+// 	// get total width of all menu items
+// 	var getMenuSize = function() {
+// 		return itemsLength * itemSize;
+// 	};
+// 	var menuSize = getMenuSize();
+// 	// get how much of menu is invisible
+// 	var menuInvisibleSize = menuSize - menuWrapperSize;
+
+// 	// get how much have we scrolled to the left
+// 	var getMenuPosition = function() {
+// 		return $('.pe-scroll').scrollLeft();
+// 	};
+
+// 	var amount = '';
+
+// 	function scroll() {
+// 		menuInvisibleSize = menuSize - menuWrapperSize;
+// 		// get how much have we scrolled so far
+// 		var menuPosition = getMenuPosition();
+
+// 		var menuEndOffset = menuInvisibleSize - paddleMargin;
+
+// 		// show & hide the paddles 
+// 		// depending on scroll position
+// 		if (menuPosition <= paddleMargin) {
+// 			leftPaddle.addClass('hidden');
+// 			rightPaddle.removeClass('hidden');
+// 		} else if (menuPosition < menuEndOffset) {
+// 			// show both paddles in the middle
+// 			leftPaddle.removeClass('hidden');
+// 			rightPaddle.removeClass('hidden');
+// 		} else if (menuPosition >= menuEndOffset) {
+// 			leftPaddle.removeClass('hidden');
+// 			rightPaddle.addClass('hidden');
+// 		}
+
+// 		$('.pe-scroll').animate({
+// 			scrollLeft: amount
+// 			}, 100, 'linear', function() {
+// 			if (amount != '') {
+// 				scroll();
+// 			}
+// 		});
+// 	}
+
+// 	rightPaddle.hover(function() {
+// 		amount = '+=55';
+// 		scroll();
+// 	}, function() {
+// 		amount = '';
+// 	});
+
+// 	leftPaddle.hover(function() {
+// 		amount = '-=55';
+// 		scroll();
+// 	}, function() {
+// 		amount = '';
+// 	});
+
+// })
+
+// //add or remove profile images
+// if(document.getElementById("edit-form")){
+
+// 	var editInpFile = $("#edit-form .edit-img-wr input");
+   
+//     editInpFile.each(function(i, obj){
+//     	// console.log($this);
+//     	var $this = $(this);
+//     	var $currentUploader = $this.closest('.edit-img-wr');
+//     	var editImgBtn = $currentUploader.find('.edit-img-btn');
+//     	var editImgRemoveBtn = $currentUploader.find('.edit-remove');
+//     	var editImgAddBtn = $currentUploader.find('.edit-add');  
+	    
+// 	    $this.on('change', function handleImage(e) {
+			
+// 			var $reader = new FileReader();
+			
+// 			$reader.onload = function (event) {
+// 				$currentUploader.find('.edit-img').attr('src', event.target.result);
+// 			};
+// 			$reader.readAsDataURL(e.target.files[0]);
+// 		});
+	    
+// 		$currentUploader
+// 		.on('click', '.edit-remove', function(){
+// 			console.log("remove clicked");
+// 			$currentUploader.find('.edit-img').attr('src', "default-avatar.png");
+// 			editImgBtn.toggleClass("edit-remove edit-add");
+// 		}).on('click', '.edit-add', function(){
+// 			console.log("add clicked")
+// 			$this.click();
+// 			editImgBtn.toggleClass("edit-remove edit-add");
+// 		})
+
+//     })
+   
+// };

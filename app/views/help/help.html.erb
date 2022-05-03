@@ -1,0 +1,98 @@
+<% content_for :title, "Help Center - Trummi" %>
+
+<div class="help" id="Help_main">
+	<div class="mb-2 cont-header" align="center">
+		
+		<div class="cont-header-title">Help Center</div>
+	</div>
+
+	<div class="mt-5 mb-5" align="center">
+    	<h4>How can we help you?</h4>
+  	</div>
+
+	<div class="row row-cols-1 row-cols-md-3 g-4 pt-5" align="center">
+    	<div class="col-6 col-md-4 col-pe">
+      		<div class="card text-center pe-container">
+      			<div class="card-img-top peiw">
+		          <div class="pei">
+		            <%= image_tag("info.svg") %>
+		          </div>
+		        </div>
+      			
+      			<div class="card-body pt-4 pb-4">
+					<p class="card-text"><%= link_to "About", help_about_path, class: "stretched-link" %></p>
+				</div>
+      		</div>
+      	</div>
+
+      	<div class="col-6 col-md-4 col-pe">
+      		<div class="card text-center pe-container">
+      			<div class="card-img-top peiw">
+		          <div class="pei">
+		            <%= image_tag("default-user.svg") %>
+		          </div>
+		        </div>
+      			
+      			<div class="card-body pt-4 pb-4">
+					<p class="card-text"><%= link_to "Account", help_account_path, class: "stretched-link" %></p>
+				</div>
+      		</div>
+      	</div>
+
+      	<div class="col-6 col-md-4 col-pe">
+      		<div class="card text-center pe-container">
+      			<div class="card-img-top peiw">
+		          <div class="pei">
+		            <%= image_tag("matches.png") %>
+		          </div>
+		        </div>
+      			
+      			<div class="card-body pt-4 pb-4">
+					<p class="card-text"><%= link_to "Matches", help_matches_path, class: "stretched-link" %></p>
+				</div>
+      		</div>
+      	</div>
+
+      	<div class="col-6 col-md-4 col-pe">
+      		<div class="card text-center pe-container">
+      			<div class="card-img-top peiw">
+		          <div class="pei">
+		            <%= image_tag("mail.svg") %>
+		          </div>
+		        </div>
+      			
+      			<div class="card-body pt-4 pb-4">
+					<p class="card-text"><%= link_to "Messaging", help_messaging_path, class: "stretched-link" %></p>
+				</div>
+      		</div>
+      	</div>
+
+      	<div class="col-6 col-md-4 col-pe">
+      		<div class="card text-center pe-container">
+      			<div class="card-img-top peiw">
+		          <div class="pei">
+		            <%= image_tag("tag.svg") %>
+		          </div>
+		        </div>
+      			
+      			<div class="card-body pt-4 pb-4">
+					<p class="card-text"><%= link_to "Tags", help_tags_path, class: "stretched-link" %></p>
+				</div>
+      		</div>
+      	</div>
+
+      	<div class="col-6 col-md-4 col-pe">
+      		<div class="card text-center pe-container">
+      			<div class="card-img-top peiw">
+		          <div class="pei">
+		            <%= image_tag("verified.svg") %>
+		          </div>
+		        </div>
+      			
+      			<div class="card-body pt-4 pb-4">
+					<p class="card-text"><%= link_to "Verification", help_verification_path, class: "stretched-link" %></p>
+				</div>
+      		</div>
+      	</div>
+  	</div>
+</div>

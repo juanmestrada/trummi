@@ -1,0 +1,62 @@
+<div class="profile-popover">
+	<div class="row">
+		<div class="col-7 px-1 popimg">
+			<% if p.image1? %>
+		    	<%= link_to image_tag(p.image1.url(:thumb), height: "100%", width: "100%", class: "header-img", draggable: "false"), profile_path(p.id) if p.image1?%>
+		    <% else %>
+		        <%= link_to image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", class: "header-img", draggable: "false"), profile_path(p.id) %>
+		    <% end %>
+		    
+		</div>
+		<div class="col-5 px-1 popfollow" align="center">
+			<div align="center">
+				<span><%= number_to_human(p.followers.count) %></span>
+				<p class="text-dark pf"><strong>Followers</strong></p>
+			</div>
+			<div align="center">
+				<span><%= number_to_human(p.following.count) %></span>
+				<p class="text-dark pf"><strong>Following</strong></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 px-1">
+			<!--  -->
+			<div class="popheader">
+		    	<div class="pophname text-dark">
+		    		<strong><%= p.name %></strong>
+		    		<%= image_tag("verified.svg") if p.verified? %>, <%= p.user.age(p.user.dob) %>
+		    	</div>
+		    	<!-- <div class="pophuname">
+		    		<span>@<%= p.username %></span>
+		    	</div>  -->
+		    </div>
+			<!--  -->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 px-1">
+			<p class="mb-2"><%= p.headline %></p>
+		</div>
+	</div>
+	<% if current_user.profile.id != p.id  && !current_user.profile.blocking?(@profile) %>
+	<div class="row">
+		<div class="col px-1">
+			<% if new_conv_or_pm?(p.id) %>
+			    
+			    	<%= button_to "Message", new_personal_message_path, params: {receiver_id: p.id}, method: :get, remote: true, class: "popmsg popnewmsg", data: { bs_toggle: "modal", bs_target: "#postModal" } %>
+			<% else %> 
+				<%= button_to "Message", new_personal_message_path, params: {receiver_id: p.id}, method: :get, class: "popmsg popconv" %>	
+				
+			<% end %>
+		</div>
+		<div class="col px-1">
+			<% if current_user.profile.following?(p) %>
+			  <%= button_to "Unfollow", current_user.profile.active_relationships.find_by(followed_id: p.id), method: :delete, remote: true, class: "popfollowbtn unfollow" %>
+			<% else %>
+			  <%= button_to "Follow", [current_user.profile.active_relationships.build, followed_id: p.id], method: :post, remote: true, class: "popfollowbtn follow" %>
+			<% end %> 
+		</div> 
+	</div>
+  	<% end %>
+</div>

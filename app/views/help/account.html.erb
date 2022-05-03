@@ -1,0 +1,105 @@
+<% content_for :title, "Help Center/Account - Trummi" %>
+
+<div class="help" id="Account">
+	<div class="mb-2 cont-header" align="center">
+		<div class="cont-header-profile">
+			<div class="i-wrapper">
+				<%= button_to help_path, method: :get, class: "bg-transparent p-0" do %>
+					<%= image_tag("back.svg", class: "back") %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="cont-header-title">Manage Your Account</div>
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<div >
+	    	<h6><strong>Account Settings</strong></h6>
+	  	</div>
+		
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse1" aria-expanded="false" >How do I change my password?<span class="btn-caret"></span></button>
+
+		<div class="collapse px-2" id="accountCollapse1">
+			<div class="card card-body border-0">
+				<p>You must be signed in to change your password.</p>
+
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-cog"></i> <strong>Settings</strong> on the menu to go to the Settings page.</li>
+				  	<li class="list-group-item border-0">Tap the <strong>Security</strong> tab to display the security options.</li>
+				  	<li class="list-group-item border-0">Tap <strong>Password</strong> to go to the Change Password page.</li>
+					<li class="list-group-item border-0">Follow the instructions to change your password.</li>
+					<li class="list-group-item border-0">Tap <strong>Update Password</strong>.</li>
+				</ol>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse2" aria-expanded="false" >How do I edit my profile?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="accountCollapse2">
+			<div class="card card-body border-0">
+				<p>You must be signed in to edit your profile.</p>
+
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-edit"></i> <strong>Edit Profile</strong> on the menu to go to the Edit Profile page.</li>
+				  	<li class="list-group-item border-0">Type in your information.</li>
+					<li class="list-group-item border-0">Tap <strong>Update Profile</strong>.</li>
+				</ol>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse3" aria-expanded="false" >Can I make my profile private so that only approved followers can view it?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="accountCollapse3">
+			<div class="card card-body border-0">
+				<p>Trummi was created with the intention of giving users a place where they can be their true selves. In an effort to uphold the spirit of honesty and transparency among all users, private accounts are not a feature at this moment.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="d-grid gap-2 mb-5">
+		<div>
+	    	<h6><strong>Delete/Disable Your Account</strong></h6>
+	  	</div>
+
+	  	<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse4" aria-expanded="false" >How do I temporarily disable my account?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="accountCollapse4">
+			<div class="card card-body border-0">
+				<p>We all need a little break sometimes. Disabling your account will hide your profile until you are ready to  reactivate it.</p>
+
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-cog"></i> <strong>Settings</strong> on the menu to go to the Settings page.</li>
+				  	<li class="list-group-item border-0">Tap the <strong>Account</strong> tab to display the account options.</li>
+				  	<li class="list-group-item border-0">Tap <strong>Disable Account</strong> to go to the Disable Account page.</li>
+					<li class="list-group-item border-0">After confirming you're ready to continue, tap <strong>Disable My Account</strong>.</li>
+					<li class="list-group-item border-0">Tap <strong>Disable</strong> on the confirmation popup.</li>
+				</ol>
+			</div>
+		</div>
+
+	  	<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#accountCollapse5" aria-expanded="false" >How do I delete my account?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="accountCollapse5">
+			<div class="card card-body border-0">
+				<p><strong>Once you delete your account all of your information including messages and posts will be permanently deleted.</strong></p>
+
+				<p>Consider <span class="tr-pri-c"><%= link_to "disabling", settings_disable_account_path, class: "tr-pri-c" %></span> your account instead. Disabling your account only hides your profile until you are ready to reactivate it and does not affect your information.</p>
+				
+
+				<ol class="list-group list-group-numbered">
+				  <li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-cog"></i> <strong>Settings</strong> on the menu to go to the Settings page.</li>
+				  	<li class="list-group-item border-0">Tap the <strong>Account</strong> tab to display the account options.</li>
+				  	<li class="list-group-item border-0">Tap <strong>Delete Account</strong> to go to the Delete Account page.</li>
+					<li class="list-group-item border-0">After confirming you're ready to continue, tap <strong>Delete My Account</strong>.</li>
+					<li class="list-group-item border-0">Tap <strong>Disable</strong> on the confirmation popup.</li>
+				</ol>
+			</div>
+		</div>
+
+	</div>
+</div>

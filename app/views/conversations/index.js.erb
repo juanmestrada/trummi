@@ -1,0 +1,8 @@
+$('#conversation-wrapper').append('<%= j render(@conversations) %>');
+<% if @conversations.next_page %>
+	$('.pagination-more').removeClass('disabled');
+	$('.pagination-more').attr('href', '<%= conversations_path(page: @conversations.next_page) %>');
+	$('.pagination-more').html("<i class='fas fa-plus-circle'></i> <span>More</span>");
+<% else %>
+	$('.pagination-more').remove();
+<% end %>

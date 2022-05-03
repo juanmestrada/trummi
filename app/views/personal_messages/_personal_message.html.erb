@@ -1,0 +1,29 @@
+<div class="col-12 " >
+	<div class="row m-1 message <%= personal_message.profile.id == current_user.profile.id ? "float-end" : "" %>">
+		<% if personal_message.profile.id != current_user.profile.id %>
+		<div class="col-2 header-img">
+			<% if personal_message.profile.image1? %>
+				<%= image_tag(personal_message.profile.image1.url(:thumb), height: "100%", width: "100%", class: "card-img-top no-sel") %>
+	          <% else %>
+	            <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", class: "card-img-top no-sel")%>
+			<% end %>
+		</div>
+		<% end %>   
+	        
+		<div class="<%= personal_message.profile.id == current_user.profile.id ? "col-10 offset-2" : "col-10 pe-0" %>">
+			<div class="row <%= 'justify-content-end' if personal_message.profile.id == current_user.profile.id %>">
+				<div class="message-body <%= personal_message.profile.id == current_user.profile.id ? "sender" : "reciever" %>">
+	        		<%= sanitize personal_message.body %>
+	    		</div> 
+	    	
+	    	
+	    		<div class="col-12" >
+	    			<p class="<%= personal_message.profile.id == current_user.profile.id ? "float-end" : "float-start" %>">
+	    				<small><%= time_ago_in_words(personal_message.created_at) %> ago</small>
+	    			</p>
+	    		</div>
+			</div>
+		</div>
+
+	</div>     
+</div>

@@ -1,0 +1,123 @@
+<% content_for :title, "Help Center/Tags - Trummi" %>
+
+<div class="help" id="Tags">
+	<div class="mb-2 cont-header" align="center">
+		<div class="cont-header-profile">
+			<div class="i-wrapper">
+				<%= button_to help_path, method: :get, class: "bg-transparent p-0" do %>
+					<%= image_tag("back.svg", class: "back") %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="cont-header-title">Manage Your Tags</div>
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<p>Similiar to tags or #hashtags used on other platforms, tags are used on Trummi to associate or categorize information under a certain topic. The difference is that here at Trummi, tags are more personal to you. Trummi encourages you to add tags that describe you, your ideas and opinions, your interests or anything important to you that others should know when meeting you.</p>
+
+		<p>Users are automatically matched when they share the same tags so the more tags you use to describe yourself, the more likely you are to find others that have things in common with you!</p>
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<div >
+	    	<h6><strong>Adding Tags</strong></h6>
+	  	</div>
+
+	  	<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#tagsCollapse1" aria-expanded="false" >What type of tags are allowed?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="tagsCollapse1">
+			<div class="card card-body border-0">
+				<p>We encourage everyone to use tags they feel comfortable sharing with others. Trummi supports freedom of expression for all but tags used with the intent to cause harm or incite fear goes against what Trummi stands for and is not permitted. Let's keep Trummi a safe place for everyone by avoiding tags that may be offensive to others.</p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#tagsCollapse2" aria-expanded="false" >Are tags necessary?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="tagsCollapse2">
+			<div class="card card-body border-0">
+				<p>Trummi matches users who share the same tags, so without them, it becomes a lot more difficult to build friendships with like-minded people.</p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#tagsCollapse3" aria-expanded="false" >How do I add a tag?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="tagsCollapse3">
+			<div class="card card-body border-0">
+				<p>Tags can be added from your profile or from settings.</p>
+
+				<p><strong>From your profile:</strong></p>
+				<ol class="list-group list-group-numbered mb-3">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> <strong>My profile</strong> on the menu to go to your profile.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-plus"></i> on the tags section of your profile details to go to the Tags Page.</li>
+				  	<li class="list-group-item border-0">Type in your new tag in the input field then tap <i class="fas fa-plus"></i>.</li>
+					<li class="list-group-item border-0">If done correctly, your new tag will appear in the tag container.</li>
+				</ol>
+
+				<p><strong>From settings:</strong></p>
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-cog"></i> <strong>Settings</strong> on the menu to go to the Settings page.</li>
+				  	<li class="list-group-item border-0">Tap the <strong>Account</strong> tab to display the account options.</li>
+				  	<li class="list-group-item border-0">Tap <strong>My Tags</strong> to go to the Tags page.</li>
+				  	<li class="list-group-item border-0">Type in your new tag in the input field then tap <i class="fas fa-plus"></i>.</li>
+					<li class="list-group-item border-0">If done correctly, your new tag will appear in the tag container.</li>
+				</ol>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#tagsCollapse4" aria-expanded="false" >Can I hide my tags from others?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="tagsCollapse4">
+			<div class="card card-body border-0">
+				<p>We encourage users to be as transparent as they feel comfortable with but understand it may be scary to put yourself out there for all to see. Users have the option to hide all of their tags from view. Individual tags may not be hidden.</p>
+
+				<p><strong>Making tags private does not prevent your profile from appearing in search results for users that share one or more tags with you.</strong></p>
+
+				<p><strong>To hide tags:</strong></p>
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-cog"></i> <strong>Settings</strong> on the menu to go to the Settings page.</li>
+				  	<li class="list-group-item border-0">Tap the <strong>Privacy</strong> tab to display the privacy options.</li>
+				  	<li class="list-group-item border-0">Tap the slider next to <strong>Hide Tags</strong>.</li>
+				</ol>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<div >
+	    	<h6><strong>Removing Tags</strong></h6>
+	  	</div>
+
+	  	<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#tagsCollapse5" aria-expanded="false" >How do I remove a tag?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="tagsCollapse5">
+			<div class="card card-body border-0">
+				<p>Tags can be removed from your profile or from settings.</p>
+
+				<p><strong>From your profile:</strong></p>
+				<ol class="list-group list-group-numbered mb-3">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> <strong>My profile</strong> on the menu to go to your profile.</li>
+				  	<li class="list-group-item border-0">Scroll down to the tags section of your profile details.</li>
+				  	<li class="list-group-item border-0">Tap <strong>X</strong> on the tag you wish to remove.</li>
+				  	<li class="list-group-item border-0">Tap <strong>Delete</strong> on the confirmation popup.</li>
+				</ol>
+
+				<p><strong>From settings:</strong></p>
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap <i class="fas fa-user-circle"></i> or your profile picture from the navigation bar to display the menu.</li>
+				  	<li class="list-group-item border-0">Tap <i class="fas fa-cog"></i> <strong>Settings</strong> on the menu to go to the Settings page.</li>
+				  	<li class="list-group-item border-0">Tap the <strong>Account</strong> tab to display the account options.</li>
+				  	<li class="list-group-item border-0">Tap <strong>My Tags</strong> to go to the Tags page.</li>
+				  	<li class="list-group-item border-0">Tap <strong>X</strong> on the tag you wish to remove.</li>
+				  	<li class="list-group-item border-0">Tap <strong>Delete</strong> on the confirmation popup.</li>
+				</ol>
+			</div>
+		</div>
+
+	</div>
+</div>

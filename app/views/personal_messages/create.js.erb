@@ -1,0 +1,41 @@
+<% if !@personal_message.errors.any? %>
+ 
+  $("#notice_wrapper").html("<%= j render partial: 'layouts/flash_notice' %>");
+
+  setTimeout(function() {
+    $('#notice_wrapper div').fadeOut("slow", function() {
+        $(this).remove();
+    })
+  }, 3000)
+  
+  // post views: _post partial
+  if ($('.post-container[data-profile="<%= @personal_message.receiver.id %>"] .post-dropdown')[0]) {
+    $('.post-container[data-profile="<%= @personal_message.receiver.id %>"] .post-header .card-img-top[data-bs-content]').attr('data-bs-content', '<%= j render partial: "components/profile_card", locals: {p: @personal_message.receiver} %>');
+  }
+
+  // profile links views: profile_show, profile_card
+  if ($('[data-prolinks="<%= @personal_message.receiver.id %>"] .messagei a')) {
+    $('[data-prolinks="<%= @personal_message.receiver.id %>"] .messagei a').removeAttr('data-bs-toggle');
+    $('[data-prolinks="<%= @personal_message.receiver.id %>"] .messagei a').removeAttr('data-remote');
+  }
+
+  // popover visible
+  if ($('.popover')[0]) {
+    $('.popover .popover-body').html('<%= j render partial: "components/profile_card", locals: {p: @personal_message.receiver} %>');
+  }
+
+  // comment views: _comment partial
+  if ($('#comments')[0]) {
+    $('.c-wrapper[data-profile="<%= @personal_message.receiver.id %>"] .chi .card-img-top').attr('data-bs-content', '<%= j render partial: "components/profile_card", locals: {p: @personal_message.receiver} %>');
+  }
+
+  // profile dropdown [mobile]
+  if ($('.pp-d')[0]) {
+    $('.pp-d .post-dropdown').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @personal_message.receiver} %>');
+  }
+  
+<% else %>
+
+  $('#error-div').html('<%= j render partial: "components/error_messages", locals: {object: @personal_message} %>');
+
+<% end %>

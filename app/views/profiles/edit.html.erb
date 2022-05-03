@@ -1,0 +1,354 @@
+<% content_for :title, "Edit Profile - Trummi" %>
+
+<% if @profile.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+    <% @profile.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for(@profile, :html => {class: "form-horizontal bg-white profile-form", id:"edit-form", role: "form"}) do |f| %>
+  <div class="mb-5" align="center">
+    <h4>Edit Profile</h4>
+  </div>
+  <!-- Profile Bio -->
+  <h4 class="tr-pri-c mb-5"><strong>Intro</strong></h4>
+  <div class="row">
+    <div class="col-12 px-2 mb-4">
+      <div class="form-group">
+        <h5><%= f.label :headline, "Headline" %></h5>
+        <%= f.text_field :headline, placeholder: "Add a headline", class: "form-control shadow-sm p-3 rounded", align: "center" %> 
+      </div>
+    </div>
+
+    <div class="col-12 px-2 mb-4">
+      <div class="form-group">
+        <h5><%= f.label :about, "About me" %></h5>
+        <%= f.text_area :about, placeholder: "Say something about yourself", class: "form-control shadow-sm p-3 rounded" %>
+      </div>
+    </div>
+
+    <div class="col-12 px-2 mb-4">
+      <div class="form-group">
+        <h5><%= f.label :searchingfor, "I'm here for" %></h5>
+        <%= f.text_area :searchingfor, placeholder: "Add why you're here", class: "form-control shadow-sm p-3 rounded" %>
+      </div>
+    </div>
+    
+  </div>
+  <!-- Profile Images -->
+  <h4 class="tr-pri-c mb-5"><strong>Photos</strong></h4>
+  <div class="row">
+    <div class="col-12 edit-img-section">
+      <div class="row">
+        <div class="col-6 col-md-3 p-1">
+          <div class="card edit-img-wr">
+            <% if current_user.profile.image1?  %>
+              <%= image_tag(current_user.profile.image1.url(:thumb), class: "card-img-top edit-img pr-img", data: { "bs-target": "#imgModal", "bs-toggle": "modal", "bs-url": "#{current_user.profile.image1.url}"}) %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-remove"></div></div>
+            <% else %>
+              <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", draggable: "false", class: "card-img-top edit-img") %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-add"></div></div>
+            <% end %>
+            <%= f.hidden_field :remove_image1, class: "remove_image" %> 
+            <%= f.file_field :image1, accept: 'image/jpeg,image/gif,image/png', class: "edit-file-input" %>
+          </div>
+        </div> 
+
+        <div class="col-6 col-md-3 p-1">
+          <div class="card edit-img-wr">
+            <% if current_user.profile.image2? %>
+              <%= image_tag(current_user.profile.image2.url(:thumb), class: "card-img-top edit-img pr-img", data: { "bs-target": "#imgModal", "bs-toggle": "modal", "bs-url": "#{current_user.profile.image2.url}"}) %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-remove"></div></div>
+            <% else %>
+              <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", draggable: "false", class: "card-img-top edit-img") %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-add"></div></div>
+            <% end %>
+            <%= f.hidden_field :remove_image2, class: "remove_image" %> 
+            <%= f.file_field :image2, accept: 'image/jpeg,image/gif,image/png', class: "edit-file-input" %>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 p-1">
+          <div class="card edit-img-wr">
+            <% if current_user.profile.image3? %>
+              <%= image_tag(current_user.profile.image3.url(:thumb), class: "card-img-top edit-img pr-img", data: { "bs-target": "#imgModal", "bs-toggle": "modal", "bs-url": "#{current_user.profile.image3.url}"}) %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-remove"></div></div>
+            <% else %>
+              <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", draggable: "false", class: "card-img-top edit-img") %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-add"></div></div>
+            <% end %>
+            <%= f.hidden_field :remove_image3, class: "remove_image" %> 
+            <%= f.file_field :image3, accept: 'image/jpeg,image/gif,image/png', class: "edit-file-input" %>  
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 p-1">
+          <div class="card edit-img-wr">
+            <% if current_user.profile.image4?  %>
+              <%= image_tag(current_user.profile.image4.url(:thumb), class: "card-img-top edit-img pr-img", data: { "bs-target": "#imgModal", "bs-toggle": "modal", "bs-url": "#{current_user.profile.image4.url}"}) %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-remove"></div></div>
+            <% else %>
+              <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", draggable: "false", class: "card-img-top edit-img") %>
+              <div class="edit-img-btn-wr"><div class="edit-img-btn edit-add"></div></div>
+            <% end %>
+            <%= f.hidden_field :remove_image4, class: "remove_image" %> 
+            <%= f.file_field :image4, accept: 'image/jpeg,image/gif,image/png', class: "edit-file-input" %>
+          </div>
+        </div> 
+        <!--  -->
+        
+        <!--  -->
+      </div>
+    </div>
+  </div>
+
+  <% if !current_user.isunderage %>
+    <!-- Profile Details -->
+    <h4 class="tr-pri-c mb-5"><strong>Details</strong></h4>
+
+    <div class="row info-scroll">
+      <div class="col-12 p-0">
+        <div class="row pe-scroll">
+
+          <!-- Location -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("location.svg", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Location</strong></p>
+              <div class="card-select">
+                <%= f.text_field :location, class: "form-control p-2 mb-2" %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ethnicity -->
+          <div class="col col-pe">
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("ethnicity-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Ethnicity</strong></p>
+              <div class="card-select">
+                <%= f.select(:ethnicity, [["Aboriginal"], ["Arabic/ Middle Eastern"], ["Asian/ Pacific descent"], ["Bangladeshi"], ["Black/ African descent"], ["Chinese"], ["Hispanic or Latino"], ["Indian"], ["Japanese"], ["Korean"], ["Native American"], ["Pakistani"], ["White/ caucasian"], ["Other"]], {prompt: "Ethnicity"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Religion -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("religion.svg", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Religion</strong></p>
+              <div class="card-select">
+                <%= f.select(:religion, [["Baha'i"], ["Buddhist"], ["Cao Dai"], ["Catholic"], ["Christian"], ["Christian Science"], ["Confucianism"], ["Hindu"], ["Jainism"], ["Jewish"], ["Metaphysical"], ["Muslim"], ["Neither religious nor spiritual"], ["New Age"], ["Pagan"], ["Rastafarian"], ["Scientology"], ["Sikh"], ["Shinto"], ["Spiritual but not religious"], ["Taoism"], ["Tenrikyo"], ["Unitarian Universalism"], ["Wiccan"], ["Other"]], {prompt: "Religion"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Relationship -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("relationship-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Relationship Status</strong></p>
+              <div class="card-select">
+                <%= f.select(:relationship, [["It's Complicated"], ['Open relationship'], ['Single'], ['Taken']], {prompt: "Relationship Status"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sexuality -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("sexuality-icon.svg", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Sexual Orientation</strong></p>
+              <div class="card-select">
+                <%= f.select(:sexuality, [['Asexual'], ['Bi-sexual'], ['Gay'], ['Lesbian'], ['Straight'], ["Open minded"]], {prompt: "Sexual Orientation"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Height -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("height-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Height</strong></p>
+              <div class="card-select">
+                <%= f.select(:height, ["< 3'4 (102cm)", "3'4 (102cm)", "3'5 (104cm)", "3'6 (107cm)", "3'7 (109cm)", "3'8 (112cm)", "3'9 (114cm)", "3'10 (117cm)", "3'11 (119cm)", "4'0 (122cm)", "4'1 (124cm)", "4'2 (127cm)", "4'3 (130cm)", "4'4 (132cm)", "4'5 (135cm)", "4'6 (137cm)", "4'7 (140cm)", "4'8 (142cm)", "4'9 (145cm)", "4'10 (147cm)", "4'11 (150cm)", "5'0 (152cm)", "5'1 (155cm)", "5'2 (157cm)", "5'3 (160cm)", "5'4 (163cm)", "5'5 (165cm)", "5'6 (168cm)", "5'7 (170cm)", "5'8 (173cm)", "5'9 (175cm)", "5'10 (178cm)", "5'11 (180cm)", "6'0 (183cm)", "6'1 (185cm)", "6'2 (188cm)", "6'3 (191cm)", "6'4 (193cm)", "6'5 (196cm)", "6'6 (198cm)", "6'7 (201cm)", "6'8 (203cm)", "6'9 (206cm)", "6'10 (208cm)", "6'11 (211cm)", "7'0 (213cm)", "7'0 (213cm) <"], {prompt: "Height"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Education -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("education.svg", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Education Level</strong></p>
+              <div class="card-select">
+                <%= f.select(:education, [["Associate's Degree"], ["Bachelor's Degree"], ['Doctorate Degree'], ["High School Diploma"], ["Master's Degree"], ["Professional Degree"], ["Some College"], ["Still In School"]], {prompt: "Education Level"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Body Type -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("bodytype-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Body Type</strong></p>
+              <div class="card-select">
+                <%= f.select(:bodytype, [["Athletic"], ["Average"], [" A few extra pounds"], ["Muscular"], ["More to love"], ["Slim"]], {prompt: "Body Type"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eye Color -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("eyecolor-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Eye Color</strong></p>
+              <div class="card-select">
+                <%= f.select(:eyecolor, [["Amber"], ["Black"], ["Blue"], ["Brown"], ["Gray"], ["Green"], ["Hazel"], ["Red"], ["Other"]], {prompt: "Eye Color"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hair Color -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("hair-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Hair Color</strong></p>
+              <div class="card-select">
+                <%= f.select(:haircolor, [["Black"], ["Brown"], ["Blond"], ["White/Gray"], ["Red"], ["Colored"]], {prompt: "Hair Color"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Living -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("living-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Living Situation</strong></p>
+              <div class="card-select">
+                <%= f.select(:living, [['Live alone'], ['Live with partner'], ['Live with roommates'], ["Live with parents"]], {prompt: "Living Situation"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kids -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("children-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Kids</strong></p>
+              <div class="card-select">
+                <%= f.select(:kids, [["Don't want kids"], ['Have kids'], ["Kids are grown"], ['No kids'], ['Some day']], {prompt: "Kids"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Smoking -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("smoking-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Smoking</strong></p>
+              <div class="card-select">
+                <%= f.select(:smoking, [["Against smoking"], ["Don't smoke"], ["Heavy smoker"],  ["Occasional smoker"], ['Social smoker']], {prompt: "Smoking"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drinking -->
+          <div class="col col-pe"> 
+            <div class="card text-center pe-container">
+              <div class="peiw">
+                <div class="pei">
+                  <%= image_tag("drinking-icon.png", class: "pe-img profile-icon") %>
+                </div>
+              </div>
+              <p class="card-title text-secondary"><strong>Drinking</strong></p>
+              <div class="card-select">
+                <%= f.select(:drinking, [["Against drinking"], ["Don't drink"], ['I drink socially'], ['I drink occasionally'], ["I drink a lot"]], {prompt: "Drinking"}, { class: 'form-select border-0 p-2 mb-2 bg-white'}) %>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+        <!-- paddles -->
+        <div class="paddles">
+          <div class="leftPaddle paddle hidden">
+            <%= image_tag("prev.svg", class: "fil") %>
+          </div>
+          <div class="rightPaddle paddle">
+            <%= image_tag("next.svg", class: "fil") %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="row my-5">
+    <div class="col-12 p-0" align="center">
+      <%= f.button "Update Profile", class: "post-btn rounded-pill", data: {bs_disable_with: "<i class='fas fa-spinner'></i> Updating..."} %>
+    </div>
+  </div>
+  
+<% end %>
+
+<%= javascript_pack_tag 'edit_profile' %>

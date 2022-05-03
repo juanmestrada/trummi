@@ -1,0 +1,24 @@
+$('[data-id="<%= @post.id %>"] .like-total').text("<%= @post.thumbs_up_total %>");
+$('[data-id="<%= @post.id %>"] .dislike-total').text("<%= @post.thumbs_down_total %>");
+
+if("<%= @userlike.like %>" == 'true'){
+	
+	if($('[data-id="<%= @post.id %>"] .fa-thumbs-down').hasClass('l-fil')){
+		$('[data-id="<%= @post.id %>"] .fa-thumbs-down').removeClass('l-fil');
+		$('[data-id="<%= @post.id %>"] .fa-thumbs-up').addClass('l-fil');
+	}else{
+		$('[data-id="<%= @post.id %>"] .fa-thumbs-up').addClass('l-fil');
+	}
+	
+}
+
+if("<%= @userlike.like %>" == 'false'){
+	
+	if($('[data-id="<%= @post.id %>"] .fa-thumbs-up').hasClass('l-fil')){
+		$('[data-id="<%= @post.id %>"] .fa-thumbs-up').removeClass('l-fil');
+		$('[data-id="<%= @post.id %>"] .fa-thumbs-down').addClass('l-fil');
+	}else{
+		$('[data-id="<%= @post.id %>"] .fa-thumbs-down').addClass('l-fil');
+	}
+
+}

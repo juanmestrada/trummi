@@ -1,0 +1,14 @@
+<div class="confirm-menu-body">
+  <div class="confirm-title">
+    <div class="text-dark fw-bold mb-1">Delete this tag?</div>
+    <span class="small">You will no longer be associated with this tag once you remove it.</span>
+  </div>
+
+  <%= button_to tag_path(@tag), method: :delete, remote: true, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i>" }, class: 'confirm-item confirm-btn confirm_continue fw-bold' do %>
+    <span class="text-danger">Delete</span>
+  <% end %>
+
+  <a class="confirm-item confirm-btn confirm_cancel fw-bold" data-bs-dismiss="modal" role="button" aria-label="Close">
+    <span class="text-dark">Cancel</span>
+  </a>
+</div>

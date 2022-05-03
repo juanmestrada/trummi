@@ -1,0 +1,56 @@
+<% content_for :title, "Conversation with #{@conversation.with(current_user.profile).name.capitalize} - Trummi" %>
+
+<div id="conversation-show-container">
+  <div class="cont-header">
+    <div class="cont-header-profile">
+      <div class="i-wrapper">
+        <%= button_to 'javascript:history.back()', method: :get, class: "bg-transparent p-0" do %>
+          <%= image_tag("back.svg", class: "back") %>
+        <% end %>
+      </div>
+
+      <div class="header-img m-img">
+        <% if @conversation.with(current_user.profile).image1? %>
+          <%= link_to image_tag(@conversation.with(current_user.profile).image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel"), profile_path(@conversation.with(current_user.profile).id) %>
+        <% else %>
+          <%= link_to image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel"), profile_path(@conversation.with(current_user.profile).id) %>
+        <% end %>
+      </div>
+
+      <div class="cont-header-title chp-title">
+        <span><strong><%= @conversation.with(current_user.profile).name %></strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="messages-container" data-conversation-id="<%= @conversation.id %>">
+    <div class="col-12 messages-wr pt-2">  
+        <div class="row">
+          <%= render @convmsg %>
+        </div>   
+    </div>
+  </div>
+
+  <div class="col-12 newmessage-wr">
+    <% if !current_user.profile.blocking?(@convparticipant) %>
+      <%= form_for @personal_message do |f| %>
+
+        <%= hidden_field_tag 'conversation_id', @conversation.id %>
+        <%= f.hidden_field :body %>
+
+        <div class="message-input" id="pm-input" placeholder="Message..." contenteditable></div>
+        
+        <div class="message-submit-wr">
+          <div class="message-input-count"></div>
+          <%= f.button "Send", disabled: true , class: "message-submit" %>
+        </div>
+      
+      <% end %>
+    <% else %>
+      <%= render 'block_message' %>
+    <% end %>
+
+  </div>
+</div>
+
+<%= javascript_pack_tag 'conversations' %>

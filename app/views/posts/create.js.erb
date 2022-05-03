@@ -1,0 +1,18 @@
+<% if !@post.errors.any? %>
+  $('#notice_wrapper').html("<%= j render partial: 'layouts/flash_notice' %>");
+  
+  setTimeout(function() {
+    $('#notice_wrapper div').fadeOut("slow", function() {
+        $(this).remove();
+    })
+  }, 3000)
+
+  if ($('#posts-container')[0]) {
+    $('#posts-container').prepend('<%= j render @post %>');
+  }
+
+<% else %>
+  
+  $('#error-div').html('<%= j render partial: "components/error_messages", locals: {object: @post} %>');
+
+<% end %>

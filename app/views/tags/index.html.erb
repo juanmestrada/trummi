@@ -1,0 +1,123 @@
+<% content_for :title, "My Matches - Trummi" %>
+
+<div id="tag-container">
+	<% if !@taglist.empty? %>
+		<%= form_with url: matches_path, local: true, id: "search-sticky", method: :get do |f| %>
+			<div class="row search">
+				<div class="search-l p-1">
+					<div class="form-group m-0">
+						<%= f.text_field :q, placeholder: "Search...", data: {behavior: "autocomplete"}, class: "shadow-sm p-2 rounded w-100" %>
+					</div>
+				</div>
+
+				<div class="search-r p-1">
+					<div class="text-center border border-def shadow-sm bg-white rounded filbtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
+						<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" fill="#657786" width="24"><path d="M15,17h6v1h-6V17z M11,17H3v1h8v2h1v-2v-1v-2h-1V17z M14,8h1V6V5V3h-1v2H3v1h11V8z M18,5v1h3V5H18z M6,14h1v-2v-1V9H6v2H3v1 h3V14z M10,12h11v-1H10V12z"></path></svg>
+						<span>Filters</span>
+					</div>
+				</div>
+			</div>
+			
+			<% if !current_user.isunderage %>
+				<div id="collapseFilters" class="collapse row justify-content-end">
+					<div class="row rowwr">
+						<div class="col py-1 px-0">
+							<div class="row">
+								<div class="col-6 px-1">
+								    <%= f.text_field :min_age, placeholder: "min age", class: "border border-def shadow-sm p-2 bg-white", style: "min-width: 100%; max-width: 100%" %>  
+								</div>
+
+								<div class="col-6 px-1">
+								    <%= f.text_field :max_age, placeholder: "max age", class: "border border-def shadow-sm p-2 bg-white", style: "min-width: 100%; max-width: 100%" %>
+								</div>
+							</div>
+						</div>
+
+						<div class="col p-1">
+					      
+					      <%= f.select(:ethnicity, [["Aboriginal"], ["Arabic/ Middle Eastern"], ["Asian/ Pacific descent"], ["Bangladeshi"], ["Black/ African descent"], ["Chinese"], ["Hispanic or Latino"], ["Indian"], ["Japanese"], ["Korean"], ["Native American"], ["Pakistani"], ["White/ caucasian"], ["Other"]], {:prompt => "Ethnicity"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%; max-width: 100%"}) %>
+					    </div>
+					    <div class="col p-1">
+							
+							<%= f.select(:religion, [["Baha'i"], ["Buddhist"], ["Cao Dai"], ["Catholic"], ["Christian"], ["Christian Science"], ["Confucianism"], ["Hindu"], ["Jainism"], ["Jewish"], ["Metaphysical"], ["Muslim"], ["Neither religious nor spiritual"], ["New Age"], ["Pagan"], ["Rastafarian"], ["Scientology"], ["Sikh"], ["Shinto"], ["Spiritual but not religious"], ["Taoism"], ["Tenrikyo"], ["Unitarian Universalism"], ["Wiccan"], ["Other"]], {:prompt => "Religion"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+					    <div class="col p-1">
+							
+							<%= f.select(:sexuality, [['Asexual'], ['Bi-sexual'], ['Gay'], ['Lesbian'], ['Straight'], ["Open minded"]], {:prompt => "Sexual Orientation"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+						<div class="col p-1">
+							
+							<%= f.select(:relationship, [["It's Complicated"], ['Open relationship'], ['Single'], ['Taken']], {:prompt => "Relationship Status"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+						<div class="col p-1">
+							
+							<%= f.select(:kids, [["Don't want kids"], ['Have kids'], ["Kids are grown"], ['No kids'], ['Some day']], {:prompt => "Kids"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+						<div class="col p-1">
+							
+							<%= f.select(:education, [["Associate's Degree"], ["Bachelor's Degree"], ['Doctorate Degree'], ["High School Diploma"], ["Master's Degree"], ["Professional Degree"], ["Some College"], ["Still In School"]], {:prompt => "Education Level"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+						<div class="col p-1">
+							
+							<%= f.select(:min_height, ["3'4 (102cm)", "3'5 (104cm)", "3'6 (107cm)", "3'7 (109cm)", "3'8 (112cm)", "3'9 (114cm)", "3'10 (117cm)", "3'11 (119cm)", "4'0 (122cm)", "4'1 (124cm)", "4'2 (127cm)", "4'3 (130cm)", "4'4 (132cm)", "4'5 (135cm)", "4'6 (137cm)", "4'7 (140cm)", "4'8 (142cm)", "4'9 (145cm)", "4'10 (147cm)", "4'11 (150cm)", "5'0 (152cm)", "5'1 (155cm)", "5'2 (157cm)", "5'3 (160cm)", "5'4 (163cm)", "5'5 (165cm)", "5'6 (168cm)", "5'7 (170cm)", "5'8 (173cm)", "5'9 (175cm)", "5'10 (178cm)", "5'11 (180cm)", "6'0 (183cm)", "6'1 (185cm)", "6'2 (188cm)", "6'3 (191cm)", "6'4 (193cm)", "6'5 (196cm)", "6'6 (198cm)", "6'7 (201cm)", "6'8 (203cm)", "6'9 (206cm)", "6'10 (208cm)", "6'11 (211cm)", "7'0 (213cm)"], {:prompt => "Minimum Height"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+
+						<div class="col p-1">
+					      
+					      <div>
+					        <%= f.select(:bodytype, [["Athletic"], ["Average"], [" A few extra pounds"], ["Muscular"], ["More to love"], ["Slim"]], {:prompt => "Body Type"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+					      </div> 
+					    </div>
+					    <div class="col p-1">
+							
+							<%= f.select(:living, [['Live alone'], ['Live with partner'], ['Live with roommates'], ["Live with parents"]], {:prompt => "Living Situation"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+						<div class="col p-1">
+							
+							<%= f.select(:smoking, [["Against smoking"], ["Don't smoke"], ["Heavy smoker"],  ["Occasional smoker"], ['Social smoker']], {:prompt => "Smoking"}, { :class => 'border border-def shadow-sm p-2 bg-white', :style => "min-width: 100%"}) %>
+						</div>
+						<div class="col p-1">
+							
+							<%= f.select(:drinking, [["Against drinking"], ["Don't drink"], ['I drink socially'], ['I drink occasionally'], ["I drink a lot"]], {:prompt => "Drinking"}, { :class => 'border border-def shadow-sm p-2 bg-white'}) %>
+						</div>
+					</div>
+				
+					<div class="row  text-end cfsub">
+						<div class="col-auto p-1 text-end">
+							<%= button_tag "Cancel", class: 'cancel-btn rounded-pill', type: 'button', aria: { expanded: false, controls: "collapseFilters" } , data: { bs_toggle: 'collapse', bs_target: "#collapseFilters" } %>
+						</div>
+						<div class="col-auto p-1 text-end">
+							<%= f.submit "Apply Filters", class: "post-btn rounded-pill", name: '' %>
+						</div>
+					</div>
+					
+				</div>
+			<% end %>
+
+		<% end %>
+
+		<div class="row search-results">
+			<div class="col-12 search-warning">
+				<i class="fas fa-exclamation-circle"></i>
+				<span>You will only see users that share the same tags with you</span>
+			</div>
+			
+			<%= render @match %>
+
+		</div>	
+
+		<div class="pagination-wr"> 
+			<% if @match.next_page %>
+				<%= link_to tags_path(page: @match.next_page), class: "pagination-more" do %>
+					<i class='fas fa-plus-circle'></i> 
+					<span>More</span>
+				<% end %>
+			<% end %>
+		</div>
+
+	<% else %>
+		<div class="py-5 px-3" align="center">
+			<h5 class="mb-1">You must add tags to be matched with others.</h5>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,30 @@
+<<!-- ul class="dropdown-menu post-dropdown p-1">
+  <% if user_signed_in? && (current_user == post.user || current_user.admin? ) %>
+    <li class="dropdown-item">
+      <%= link_to remove_post_path(post, view: "show"), class: "confirm-modal", data: { remote: true, bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation"} do %>
+        <i class="far fa-trash-alt text-danger"></i> 
+        <span class="text-danger">Delete</span>
+      <% end %> 
+    </li>
+  <% else %>
+    <li class="dropdown-item follow">
+      <%= render partial: "components/follow_link", :locals => {:postuser => post.profile} %>
+    </li>
+    <li class="dropdown-item block">
+      <%= render partial: "components/block_link", :locals => {:postuser => post.profile} %>
+    </li>
+    <li class="dropdown-item">
+    <%= link_to post_path(post) do %>
+      <i class="far fa-flag"></i>
+      <span>Report</span>
+    <% end %>
+  </li> 
+  <% end %> 
+  <li role="separator" class="divider"></li>
+  <li class="dropdown-item">
+    <a>
+      <i class="fas fa-times"></i>
+      <span>Cancel</span> 
+    </a>
+  </li>
+</ul> -->

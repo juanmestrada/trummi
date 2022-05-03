@@ -1,0 +1,5 @@
+
+$('[data-id="<%= params[:post_id] %>"] .cmntcnt').text('<%= pluralize(@post.comments.count, "Comments") %>');
+
+$('.c-wrapper[data-id="<%= @comment.id %>"]').remove();
+$('[data-id="<%= params[:post_id] %>"] #top-replies').html('<%= j render partial: "comments/top_replies" %>');

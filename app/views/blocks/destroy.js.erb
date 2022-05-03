@@ -1,0 +1,92 @@
+// post views: _post partial
+if ($('.post-container[data-profile="<%= @profile.id %>"] .post-dropdown')[0]) {
+	$('.post-container[data-profile="<%= @profile.id %>"] .post-header .post-dropdown .follow').html('<%= j render partial: "components/follow_link", locals: { postuser: @profile } %>');
+	$('.post-container[data-profile="<%= @profile.id %>"] .post-header .post-dropdown .block').html('<%= j render partial: "components/block_link", locals: { postuser: @profile } %>');
+	$('.post-container[data-profile="<%= @profile.id %>"] .post-header .card-img-top[data-bs-content]').attr('data-bs-content', '<%= j render partial: "components/profile_card", locals: { p: @profile } %>');
+}
+
+// profile show view
+if ($('.profile-center-container').length) {
+	
+	if ($('.profile-left-container .p-details').hasClass("d-none")) {
+		$('.profile-left-container .p-details').removeClass("d-none");
+	} else {
+		$('.profile-left-container').html('<%= j render partial: "profiles/leftcontainer"%>');
+	}
+	
+	// Update view for unblocked profile
+	if ($("#mobiletabs").is(":hidden")) {
+		// For desktop
+
+		if ($('.profile-center-container .profile-center-posts').hasClass("d-none")) {
+			
+			$('.profile-center-container .profile-center-posts').removeClass("d-none");
+			$('.profile-center-container').find('.blck_m').remove();
+		} else {
+			$('.profile-center-container').html('<%= j render partial: "profiles/centercontainer" %>');
+			
+		}
+
+		if ($('.profile-right-container .sect-wr').hasClass("d-none")) {
+			$('.profile-right-container .sect-wr').removeClass("d-none");
+		} else {
+			$('.profile-right-container').html('<%= j render partial: "profiles/rightcontainer" %>');
+		}
+
+	} else {
+		// For mobile
+
+		$('#mobiletabs #m-Posts').removeClass("d-none");
+		$('#mobiletabs #m-Friends').removeClass("d-none");
+		$('#mobiletabs #m-Images').removeClass("d-none");
+
+		if ($('.profile-center-container').hasClass("d-none")) {
+			$('.profile-center-container').removeClass("d-none");
+		} else {
+			$('.profile-center-container').html('<%= j render partial: "profiles/centercontainer" %>');
+		}
+
+		if ($('.profile-right-container').hasClass("d-none")) {
+			$('.profile-right-container').removeClass("d-none");
+		} else {
+			$('.profile-right-container').html('<%= j render partial: "profiles/rightcontainer" %>');
+		}
+
+	}
+	
+}
+
+
+// profile links views: profile_show, profile_card
+if ($('[data-prolinks="<%= @profile.id %>"]')[0]) {
+	
+	$('[data-prolinks="<%= @profile.id %>"] .messagei').show();
+	$('[data-prolinks="<%= @profile.id %>"] .followi').show();
+	$('[data-prolinks="<%= @profile.id %>"] .messagei').html('<%= j render partial: "components/message_button", locals: { profileuser: @profile } %>');
+	$('[data-prolinks="<%= @profile.id %>"] .followi').html('<%= j render partial: "components/follow_button", locals: {  profileuser: @profile } %>');
+	$('[data-prolinks="<%= @profile.id %>"] .block_ref').html('<%= j render partial: "components/block_ref_button", locals: { profileuser: @profile, view: "" } %>');
+
+}
+
+// popover visible 
+if ($('.popover')[0]) {
+	$('.popover .popover-body').html('<%= j render partial: "components/profile_card", locals: { p: @profile } %>');
+}
+
+
+// comment views: _comment partial
+if ($('#comments')[0]) {
+	$('.c-wrapper[data-profile="<%= @profile.id %>"] .cmt-header .post-dropdown .follow').html('<%= j render partial: "components/follow_link", locals: { postuser: @profile } %>');
+	$('.c-wrapper[data-profile="<%= @profile.id %>"] .cmt-header .post-dropdown .block').html('<%= j render partial: "components/block_link", locals: { postuser: @profile } %>');
+	$('.c-wrapper[data-profile="<%= @profile.id %>"] .chi .card-img-top').attr('data-bs-content', '<%= j render partial: "components/profile_card", locals: { p: @profile } %>');
+}
+
+// profile dropdown [mobile]
+if ($('.pp-d')[0]) {
+	$('.pp-d .post-dropdown').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @profile } %>');
+}
+
+// Update existing offcanvas
+if ($('#offcanvasMobile')[0] && $('#offcanvasMobile').hasClass('show')) {
+	$('#offcanvasMobile .offcanvas-body').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @profile } %>');
+}

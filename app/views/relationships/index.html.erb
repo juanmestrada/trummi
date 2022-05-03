@@ -1,0 +1,33 @@
+<% content_for :title, "New Message - Trummi" %>
+
+<div id="fol-bloc-cont">
+
+	<div class="mb-2 cont-header" align="center">
+		<div class="cont-header-profile">
+			<div class="i-wrapper">
+				<%= button_to conversations_path, method: :get, class: "bg-transparent p-0" do %>
+					<%= image_tag("back.svg", class: "back") %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="cont-header-title">New Message</div>
+	</div>
+	
+
+	<div class="row fol-bloc-results">
+
+		<%= render @profiles %>		 
+
+	</div>
+
+	<div class="pagination-wr">
+		<% if @profiles.next_page %>
+			<%= link_to relationships_path(page: @profiles.next_page), class: "pagination-more" do %>
+				<i class='fas fa-plus-circle'></i> 
+				<span>More</span>
+			<% end %>
+		<% end %>
+	</div>	
+		
+</div>

@@ -1,0 +1,171 @@
+ <% content_for :title, " #{@post.profile.name.capitalize} on Trummi: #{@post.content}" %>
+
+<div id="posts-show-container">
+  <div class="mb-2 cont-header" align="center">
+    <div class="cont-header-profile">
+      <div class="i-wrapper">
+        <%= button_to 'javascript:history.back()', method: :get, class: "bg-transparent p-0" do %>
+          <%= image_tag("back.svg", class: "back") %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="cont-header-title">Post</div>
+  </div>
+
+  <div class="post-container mmarg" data-id="<%= @post.id %>" data-profile="<%= @post.profile.id %>"> 
+    <div class="row post-header">
+      <div class="col-2 header-img">
+        <% if @post.profile.image1? %>
+          <%= link_to image_tag(@post.profile.image1.url, height: "100%", width: "100%", class: "card-img-top m-no-sel", draggable:"false", data: { bs_toggle: "popover-prof", bs_placement: "bottom", bs_content: "#{render partial: 'components/profile_card', locals: {p: @post.profile}}" }), profile_path(@post.profile.id) %>
+        <% else %>
+          <%= link_to image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", class: "card-img-top m-no-sel", draggable:"false", data: { bs_toggle: "popover-prof", bs_placement: "bottom", bs_content: "#{render partial: 'components/profile_card', locals: {p: @post.profile}}" }), profile_path(@post.profile.id) %>
+        <% end %>
+      </div>
+
+      <div class="col-9 p-1">
+        <div class="text-dark h-inl">
+          <strong><%= @post.profile.name %><%= image_tag("verified.svg", height: "15px", class: "align-text-bottom") if @post.profile.verified? %></strong>
+        </div>
+        <div class="htsmall h-inl">
+          <span><small> - <%= time_ago_in_words(@post.created_at) %> ago</small></span>
+        </div>
+      </div>   
+
+      <div class="p-0 text-end hspan pdrop"> 
+        <button  class="pdrop-btn post-desk-menu" data-bs-toggle="dropdown" data-bs-target=".post-dropdown" data-bs-display="static" aria-expanded="false">
+          <i class="fas fa-ellipsis-v rounded-circle"></i>
+        </button>
+        
+        <a class="post-mob-menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMobile" role="button">
+          <i class="fas fa-ellipsis-v rounded-circle"></i>
+        </a>
+        
+        <ul class="dropdown-menu post-dropdown p-0">
+          <% if user_signed_in? && (current_user == @post.user || current_user.admin? ) %>
+            <li class="dropdown-item">
+              <%= button_to remove_post_path(@post), params: {view: "show"}, class: "confirm-modal", remote: true, method: :get, data: { bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation"} do %>
+                <i class="far fa-trash-alt text-danger"></i> 
+                <span class="text-danger">Delete</span>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="dropdown-item follow">
+              <%= render partial: "components/follow_link", locals: {postuser: @post.profile} %>
+            </li>
+            <li class="dropdown-item block">
+              <%= render partial: "components/block_link", locals: {postuser: @post.profile} %>
+            </li>
+            <!-- <li class="dropdown-item">
+              <%= link_to post_path(@post) do %>
+                <i class="far fa-flag"></i>
+                <span>Report</span>
+              <% end %>
+            </li>  -->
+          <% end %> 
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-item">
+            <a data-bs-toggle="offcanvas">
+              <i class="fas fa-times"></i>
+              <span>Cancel</span> 
+            </a>
+          </li>
+        </ul>
+      </div>  
+    </div>
+     
+    <div class="row post-data">
+      <div class="col-12 post-body">
+        <p class="text-dark"><%= @post.content %></p>
+      </div> 
+      <div class="col-12 post-image">
+        <div class="card-img-top <%= @fullh ? 'fh' : '' %>" align="center">
+          <%= image_tag(@post.image.url, class: "post-img pr-img", draggable: "false", alt: "Image", data: { bs_target: "#imgModal", bs_toggle: "modal", bs_url: "#{@post.image.url}" }) if @post.image? %>
+        </div>
+      </div>
+    </div>   
+    
+    
+    <div class="row post-info">
+      <div class="col">
+        <div class="row" data-id="imgwr<%= @post.id %>">
+          <%= render partial: "components/top_reaction", locals: {post: @post} %>
+        </div>
+      </div>
+      <div class="col text-end">
+        <span class="cmntcnt">
+          <%= pluralize(@post.comments.count, "Comments") %>
+        </span>
+      </div>
+    </div>
+
+    <div class="row post-action">
+      <div class="col-4 p-0" align="center">
+        <div class="pa">
+          <div class="pai text-center">
+            <%= button_to like_post_path(@post), params: {like: true}, class: "bg-transparent p-0", method: :post, remote: true do %>
+              <i class="far fa-thumbs-up <%= @post.current_user_like(current_user) ? 'l-fil' : '' %>"></i>
+            <% end %> 
+          </div>
+          <div class="pat text-start">
+            <span class="like-total fw-bolder"><%= number_to_human(@post.thumbs_up_total) %></span>
+          </div>
+          <div class="pai text-center">
+            <%= button_to like_post_path(@post), params: {like: false}, class: "bg-transparent p-0", method: :post, remote: true do %>
+              <i class="far fa-thumbs-down <%= @post.current_user_dislike(current_user) ? 'l-fil' : '' %>"></i>
+            <% end %> 
+          </div>
+          <div class="pat text-start">
+            <span class="dislike-total fw-bolder"><%= number_to_human(@post.thumbs_down_total) %></span>
+          </div>
+        </div>
+      </div> 
+
+      <div class="comment-btn col-4 p-0" align="center" data-id="<%= @post.id %>">
+        <%= button_to new_post_comment_path(@post), method: :get, remote: true, class: "bg-transparent p-0", data: { bs_toggle: "modal", bs_target: "#postModal" } do %>
+          <i class="far fa-comment"></i>
+          <span class="cmttx"><strong>Comment</strong></span> 
+        <% end %>
+      </div>
+
+      <div class="col-4 p-0 dropup" align="center">
+        <button class="dropdown-toggle react-dropd" data-bs-toggle="dropdown" data-bs-target="#Reactcollpase<%= @post.id %>" aria-expanded="false" role="button" data-bs-auto-close="outside" >
+          <i class="far fa-grin-tongue"></i>
+          <span class="align-middle"><strong>React</strong></span>
+        </button>
+
+        <div class="dropdown-menu dropdown-menu-end reaction-wrapper react-wr" id="react-wr-<%= @post.id %>" data-wrid="<%= @post.id %>" >
+          <ul class=" reaction-menu" aria-labelledby="dropdownMenuButton1">
+            <%= render partial: 'components/reactions', locals: {post: @post} %>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+      
+    <div class="row comment-container">  
+      
+        <div class="col-12 comment-wrapper">
+          <div id="comments"> 
+            
+            <div id="top-replies" class="row"><%= render partial: 'comments/top_replies' if @post.comments.count != 0 %></div>
+          
+            <div id="comments-results"><%= render @comments %></div>
+ 
+            <div class="pagination-wr">
+              <% if @comments.next_page %>
+                <%= link_to post_path(page: @comments.next_page), class: "pagination-more" do %>
+                  <i class='fas fa-plus-circle'></i> 
+                  <span>More</span>
+                <% end %> 
+              <% end %>
+              
+            </div>
+
+          </div>
+        </div>
+      
+    </div>
+  
+  </div>
+</div>

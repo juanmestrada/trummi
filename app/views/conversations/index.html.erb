@@ -1,0 +1,29 @@
+<% content_for :title, "Conversations - Trummi" %>
+
+<div id="conversation-container">
+	
+	<div class="row messages-header" align="center">
+		<div class="col-8 offset-2 p-0"><h4>Conversations</h4></div>
+		<div class="col-2 new-conv">
+			<%= button_to relationships_path, method: :get, class: "bg-transparent p-0 float-end" do %>
+	          <%= image_tag("compose.svg", draggable: "false", class: "no-sel") %>
+	        <% end %>
+		</div>
+	</div>
+	<div class="ccwr">
+		<div class="row" id="conversation-wrapper">
+			<%= render @conversations %>
+		</div>
+
+		<div class="pagination-wr">
+			<% if @conversations.next_page %>
+				<%= link_to conversations_path(page: @conversations.next_page), class: "pagination-more" do %>
+					<i class='fas fa-plus-circle'></i> 
+					<span>More</span>
+				<% end %>
+			<% end %>
+		</div>
+	
+	</div>
+	
+</div> 

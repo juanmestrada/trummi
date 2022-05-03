@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>          
+  </div>
+
+<div class="input-group row">
+	<div class="col-2 pe-0">
+		<div class="header-img m-auto">
+			<% if @receiver.image1? %>
+	          <%= image_tag(@receiver.image1.url(:thumb), height: "100%", width: "100%", class: "card-img-top") %>
+	        <% else %>
+	          <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", class: "card-img-top")  %>
+	        <% end %>
+		</div>
+	</div>
+	<div class="col-9 p-0 pm-h">
+		<p class="mb-0 text-capitalize"><strong><%= @receiver.name %></strong></p>
+		<!-- <p class="mb-0"><small>@<%= @receiver.username %></small></p> -->
+	</div>
+</div>
+
+<%= form_for @personal_message, format: :js, remote: true do |f| %>
+  <%= hidden_field_tag 'receiver_id', @receiver.id %>
+
+	<div class="input-group px-3 pb-1">
+    <div id="postData" role="textbox" contenteditable="false" aria-multiline="true">
+      <%= f.text_area :body, required: true, id: :post_content, placeholder: "Start a new message...", class: "formtext w-100 p-2 b-0", arialabel: "With textarea"%>
+    </div>
+  </div>
+ 
+
+	<div class="row px-3" id="error-div">
+    
+  </div> 
+
+	<div class="text-end px-2 pb-2">
+	  <%= f.button "Send", disabled: true, class: "post-btn rounded-pill", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"} %>
+	</div>
+		
+<% end %>

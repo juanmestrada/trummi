@@ -1,0 +1,9 @@
+<% if current_user.profile.blocking?(profileuser) %>
+  <%= button_to current_user.profile.active_blockings.find_by(blockee_id: profileuser.id), method: :delete, remote: true, title: "Unblock" do %>
+    <i class="fas fa-undo"></i>
+  <% end %>
+<% else %>
+  <%= button_to [current_user.profile.active_blockings.build, blockee_id: profileuser.id], method: :post, remote: true, title: "Block" do %>
+    <i class="fas fa-ban"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,29 @@
+<div class="confirm-menu-body">
+  <% if current_user.profile.blocking?(@profile) %>
+    <div class="confirm-title">
+      <div class="text-dark fw-bold mb-1">Unblock <%= @profile.name %>?</div>
+      <span class="small">They will be able to follow you and view your posts. They won't be notified that you unblocked them.</span>
+    </div>
+
+    <%= button_to [current_user.profile.active_blockings.find_by(blockee_id: @profile.id), view: params[:view]], method: :delete, remote: true, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i>" }, class: 'confirm-item confirm-btn confirm_continue fw-bold' do %>
+      <span class="text-danger">Unblock</span>
+    <% end %>
+
+    <a class="confirm-item confirm-btn confirm_cancel fw-bold" data-bs-dismiss="modal" role="button" aria-label="Close">
+      <span class="text-dark">Cancel</span>
+    </a>
+  <% else %>
+    <div class="confirm-title">
+      <div class="text-dark fw-bold mb-1">Block <%= @profile.name %>?</div>
+      <span class="small">They won't be able to find your posts or profile on Trummi. They will not be notified that you blocked them.</span>
+    </div>
+
+    <%= button_to [current_user.profile.active_blockings.build, blockee_id: @profile.id], method: :post, remote: true, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i>" }, class: 'confirm-item confirm-btn confirm_continue fw-bold' do %>
+      <span class="text-danger">Block</span>
+    <% end %>
+
+    <a class="confirm-item confirm-btn confirm_cancel fw-bold" data-bs-dismiss="modal" role="button" aria-label="Close">
+      <span class="text-dark">Cancel</span>
+    </a>
+  <% end %>
+</div>

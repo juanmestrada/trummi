@@ -1,0 +1,15 @@
+<%= form_with(model: @tag, id: "new-tag", local: false) do |f| %>
+  <div class="row search">
+    <div class="search-l p-0">
+      <div class="form-group m-0">
+        <%= f.text_field :name, required: true, placeholder: "New Tag...", class: "p-2 w-100" %> 
+      </div>
+    </div>
+
+    <div class="search-r p-0 ps-2">
+      <%= f.button class: "text-center border border-def shadow-sm bg-white rounded filbtn p-2 w-100", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"} do %>
+        <i class="fas fa-plus"></i> 
+      <% end %>
+    </div>
+  </div>
+<% end %>

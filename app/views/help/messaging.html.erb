@@ -1,0 +1,77 @@
+<% content_for :title, "Help Center/Messaging - Trummi" %>
+
+<div class="help" id="Messaging">
+	<div class="mb-2 cont-header" align="center">
+		<div class="cont-header-profile">
+			<div class="i-wrapper">
+				<%= button_to help_path, method: :get, class: "bg-transparent p-0" do %>
+					<%= image_tag("back.svg", class: "back") %>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="cont-header-title">Messaging on Trummi</div>
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<div >
+	    	<h6><strong>Sending Messages</strong></h6>
+	  	</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#messagingCollapse1" aria-expanded="false" >How do I send a photo in my message?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="messagingCollapse1">
+			<div class="card card-body border-0">
+				<p>Trummi is still growing and new features are on the way. At the moment, photos cannot be sent in messages.</p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#messagingCollapse2" aria-expanded="false" >Will I know when someone reads my message?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="messagingCollapse2">
+			<div class="card card-body border-0">
+				<p>We believe the world would be a better place if users didn't have access to this small piece of information. There's no plan to add read receipts at this time.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<div >
+	    	<h6><strong>Deleting Messages</strong></h6>
+	  	</div>
+
+	  	<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#messagingCollapse3" aria-expanded="false" >Can I delete a message?<span class="btn-caret"></span></button>
+
+		<div class="collapse px-2" id="messagingCollapse3">
+			<div class="card card-body border-0">
+				<p>Individual messages cannot be deleted. However, you can delete the entire conversation to remove all messages with a user.</p>
+
+				<p>To delete a conversation:</p>
+
+				<ol class="list-group list-group-numbered">
+					<li class="list-group-item border-0">Tap &nbsp <i class="fas fa-inbox"></i> &nbsp <strong>Inbox</strong> on the navigation bar to go to the Conversations Page.</li>
+				  	<li class="list-group-item border-0">Tap &nbsp <i class="fas fa-ellipsis-v"></i> &nbsp (ellipses icon) on the conversation you wish to delete to display the remove icon.</li>
+				  	<li class="list-group-item border-0">Tap &nbsp <i class="far fa-trash-alt"></i> &nbsp (remove icon).</li>
+				  	<li class="list-group-item border-0">After confirming you're ready to continue, tap <strong>Delete</strong> to permanently delete the conversation.</li>
+				</ol>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#messagingCollapse4" aria-expanded="false" >Can I recover deleted messages?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="messagingCollapse4">
+			<div class="card card-body border-0">
+				<p>No. Deleted messages are permanently removed and can't be recovered.</p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#messagingCollapse5" aria-expanded="false" >Can I unsend a message that has already been sent?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="messagingCollapse5">
+			<div class="card card-body border-0">
+				<p>No. At the moment that feature is not available.</p>
+			</div>
+		</div>
+
+	</div>
+</div>

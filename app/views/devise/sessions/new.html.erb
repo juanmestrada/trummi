@@ -1,0 +1,58 @@
+<% content_for :title, "Log In - trummi" %>
+
+<div id="sessions">
+  <div class="mb-5" align="center">
+    <h2 class="tr-pri-c mb-0"><strong>trummi</strong></h2>
+    <h6>Be your <strong>true</strong> self</h6>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { method: :post }) do |f| %>
+
+    <div class="form-group mb-4">
+      <div class="form-floating">
+        <%= f.email_field :email, placeholder: "Email", autocomplete: "email", type: "email", class: "form-control shadow-sm bg-white rounded", id: "floatingInput", required: true %>
+        <label for="floatingInput">Email address</label>
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
+      <div class="form-floating mb-2">
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "off", type: "password", class: "form-control shadow-sm bg-white rounded", id: "floatingPassword" %>
+        <label for="floatingPassword">Password</label> 
+      </div>
+      
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <div class="tr-pri-c">
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+    <div class="form-group" id="Devise_remember">
+      <div class="form-check mb-5 p-0">
+        <%= f.check_box :remember_me, class: "form-check-input", id: "rememberswitch", type: "checkbox", checked: true %>
+        <%= f.label :remember_me, for: "rememberswitch" %>
+        <span>Remember me</span>
+      </div>
+    </div>
+    <% end -%>
+
+    <div class="row mb-2" id="error-div">
+      <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
+
+    <div class="form-group mb-5" align="center">
+      <%= f.button "Log In", class: "post-btn rounded-pill w-100", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %>
+    </div>
+
+    <div class="form-group" align="center">
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <div>
+          Don't have an account? <span class="tr-pri-c"><%= link_to "Sign up", new_registration_path(resource_name) %></span>
+        </div>
+      <% end %>
+    </div>
+    
+  <% end %> 
+</div>

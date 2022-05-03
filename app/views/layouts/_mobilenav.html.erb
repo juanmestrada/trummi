@@ -1,0 +1,41 @@
+<% if user_signed_in? && !current_page?(controller:"/dashboard", action:'welcome') && !current_page?(welcome_path) %>
+<div id="mobile-nav" class="row" >
+  
+  <div class="col-8 py-0">
+    <% if user_signed_in? && current_user.profile != nil %>
+      <%= link_to image_tag("trummi_logo.png", class:"h-100 tr-logo"), posts_path, class: 'nav-item' %>
+    <% else %>
+      <%= link_to image_tag("trummi_logo.png", class:"h-100 tr-logo"), root_path, class: 'nav-item' %>
+    <% end %>
+  </div>
+
+  <div class="col-4 py-0" >
+      <ul class="nav-fill">
+          <li class="nav-item dropdown text-end mdrop" data-bs-behavior="notifications">
+            <a class="dropdown-toggle nav-link n" type="button" id="Notificationmenu" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" data-behavior="notifications-link">
+              <div class="nwr">
+                <i class="fas fa-bell nav-f"></i>
+                <span class="ntwr" data-behavior="unread">
+                  <span class="nt"></span> 
+                </span>   
+              </div>
+            </a>
+            <div class="dropdown-menu notification-menu" aria-labelledby="Notificationmenu" data-behavior="notification-items">
+              <div class="sticky-top px-2">
+                <div class="mb-2 cont-header" align="center">
+                  <div class="cont-header-profile">
+                    <div class="i-wrapper">
+                      <%= image_tag("back.svg", class: "back") %>
+                    </div>
+                  </div>
+                  
+                  <div class="cont-header-title">Notifications</div>
+                </div>
+              </div>
+            
+            </div>
+          </li>
+      </ul>
+  </div>
+</div>
+<% end %>

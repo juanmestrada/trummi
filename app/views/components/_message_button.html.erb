@@ -1,0 +1,9 @@
+<% if new_conv_or_pm?(profileuser.id) %>
+    <%= button_to new_personal_message_path, params: {receiver_id: profileuser.id}, form_class: "profile-message", title: "Message", method: :get, remote: true, data: { bs_toggle: "modal", bs_target: "#postModal" } do %>
+    	<i class="far fa-envelope"></i>
+    <% end %>
+<% else %>
+	<%= button_to new_personal_message_path, params: {receiver_id: profileuser.id}, form_class: "profile-message", title: "Message", method: :get do %>
+		<i class="far fa-envelope"></i>
+    <% end %>
+<% end %>

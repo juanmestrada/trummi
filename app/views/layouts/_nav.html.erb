@@ -1,0 +1,147 @@
+<% if user_signed_in? && !current_page?(controller:"/dashboard", action:'welcome') && !current_page?(welcome_path) %>
+<nav id="nav" class="row navbar navbar-light" >
+  
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="col-2">
+    <% if user_signed_in? && current_user.profile != nil %>
+      <%= link_to image_tag("trummi_logo.png", class:"h-100"), posts_path, class: 'nav-item' %>
+    <% else %>
+      <%= link_to image_tag("trummi_logo.png", class:"h-100"), root_path, class: 'nav-item' %>
+    <% end %>
+  </div>
+
+  <div class="col-10 navbar mynav" >
+    <% if user_signed_in? && current_user.profile != nil %>
+      <ul class="nav-fill">
+        <li class="nav-item">
+          <%= link_to posts_path, class: "nav-link #{'fil' if current_page?(posts_path)} #{'disabled' if current_user.profile.isdisabled}" do %>
+            <i class="fas fa-home"></i>
+            <p>Home</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to matches_path, class: "nav-link #{'fil' if current_page?(matches_path)} #{'disabled' if current_user.profile.isdisabled}" do %>
+            <i class="fas fa-search"></i>
+            <p>Search</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_post_path, class: "nav-link nav-f #{'disabled' if current_user.profile.isdisabled}", remote: true, data: { "bs-toggle": "modal", "bs-target": "#postModal"} do %>
+            <i class="fas fa-plus-circle"></i>
+            <p>Post</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to conversations_path, class: "nav-link #{'fil' if current_page?(conversations_path) || (@conversation && current_page?(conversation_path(@conversation)))} #{'disabled' if current_user.profile.isdisabled}" do %>
+            <i class="fas fa-inbox"></i>
+            <p>Inbox</p>
+          <% end %>
+        </li>
+        <!-- Notification Dropdown -->
+        <li class="nav-item dropdown mobd text-end nmd" data-behavior="notifications">
+          <a class="dropdown-toggle nav-link n <%= 'disabled' if current_user.profile.isdisabled %>" type="button" id="Notificationmenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="" data-behavior="notifications-link"> 
+            <div class="nwr">
+              <i class="fas fa-bell"></i>
+              <span class="ntwr" data-behavior="unread">
+                <span class="nt"></span>
+              </span>   
+            </div>
+            <p>Notifications</p>
+          </a>
+          <div class="dropdown-menu notification-menu p-0 bg-white rounded" aria-labelledby="Notificationmenu" data-behavior="notification-items">
+            
+          </div>
+        </li>
+        <!-- Profile Dropdown -->
+        <li class="nav-item dropdown dprof mdrop">
+          <!-- desktop button -->
+            <a class="nav-link post-desk-menu" role="button" id="Profilemenu" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              <div class="header-img mpi">
+                <% if current_user.profile.image1? %>
+                  <%= image_tag(current_user.profile.image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
+                <% else %>
+                  <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
+                <% end %>
+              </div>
+              <p><%= current_user.profile.name %> <%= "[Admin]" if current_user.admin? %></p>
+            </a>
+          <!--  -->
+          <!-- mobile button -->
+            <a class="nav-link post-mob-menu of-pr-men" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMobile" aria-expanded="false">
+              <div class="header-img mpi">
+                <% if current_user.profile.image1? %>
+                  <%= image_tag(current_user.profile.image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
+                <% else %>
+                  <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
+                <% end %>
+              </div>
+              <p><%= current_user.profile.name %> <%= "[Admin]" if current_user.admin? %></p>
+            </a>
+          <!--  -->
+          <div class="dropdown-menu profile-dropdown p-0" aria-labelledby="navbarDropdownMenuLink">
+
+            <div class="d-flex flex-column pd-w">
+              
+              <% if !current_user.profile.isdisabled %>
+                <%= button_to profile_path(current_user.profile.id), method: :get, form_class: "dropdown-item p-0" do %>
+                  <i class="fas fa-user-circle"></i>
+                  <span>My profile</span>
+                <% end %>
+              <% end %>
+            
+              <%= button_to edit_profile_path(current_user.profile.id), method: :get, form_class: "dropdown-item p-0" do %>
+                <i class="fas fa-edit"></i>
+                <span>Edit profile</span>
+              <% end %>
+              
+              <% if !current_user.profile.isdisabled %>
+                <%= button_to matches_path, method: :get, form_class: "dropdown-item p-0" do %>
+                  <i class="fas fa-search"></i>
+                  <span>Search</span>
+                <% end %>
+              <% end %>
+              
+              <%= button_to settings_path, method: :get, form_class: "dropdown-item p-0" do %>
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+              <% end %>
+
+              <%= button_to help_path, method: :get, form_class: "dropdown-item p-0" do %>
+                <i class="far fa-question-circle"></i>
+                <span>Help</span>
+              <% end %>
+
+              <%= button_to help_about_path, method: :get, form_class: "dropdown-item p-0 post-mob-menu" do %>
+                <i class="fas fa-exclamation-circle"></i>
+                <span>About</span>
+              <% end %>
+              
+              <%= button_to destroy_user_session_path, method: :delete, form_class: "dropdown-item p-0" do %>
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Log Out</span>
+              <% end %>
+            </div>
+
+          </div>
+
+          <!-- offcanvas  -->
+          <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasMobile" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-body">
+              
+            </div>
+          </div>
+          <!--  -->
+        </li>
+      </ul>
+    <% else %>
+      <ul class="nav-fill">
+        <li class="nav-item text-end pe-4">
+          <%= button_to destroy_user_session_path, method: :delete, class: "bg-transparent tr-pri-c" do %>
+            <h6 class="mb-0"><strong>Log Out</strong></h6>
+          <% end %>
+        </li>
+      </ul> 
+    <% end %>  
+  </div>
+</nav>
+<% end %>

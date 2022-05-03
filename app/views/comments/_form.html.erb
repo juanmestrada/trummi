@@ -1,0 +1,17 @@
+<%= form_with(model: @comment, remote: true, url: post_comments_path, id: "commentform") do |form| %>
+  <div class="modal-header">
+    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>          
+  </div>
+
+  <div class="input-group px-3 pb-1">
+    <%= form.text_area :content, required: true, id: :post_content, class: "comment_content w-100 p-2 border-0", placeholder: "Replying to #{ @post.profile.name }" %>
+  </div>
+
+  <div class="row px-3" id="error-div">
+    
+  </div> 
+
+  <div class="text-end px-2 pb-2" >
+    <%= form.button "Reply", disabled: true, class: "post-btn rounded-pill", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %>
+  </div>
+<% end %>

@@ -1,0 +1,3 @@
+<div class="col-4 col-md-3 p-1">
+	<%= image_tag(post_img.image.url, draggable: "false", class: "pr-img", id: "image-#{post_img.id}",  data: { bs_target: "#imgModal", bs_toggle: "modal", bs_url: "#{post_img.image.url}"}) if post_img.image? %>
+</div>

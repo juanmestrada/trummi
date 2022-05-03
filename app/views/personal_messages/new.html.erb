@@ -1,0 +1,39 @@
+<div class="input-group row">
+  <div class="col-2">
+    <div class="header-img">
+      <% if @receiver.image1? %>
+            <%= image_tag(@receiver.image1.url(:thumb), height: "100%", width: "100%", :class => "card-img-top") %>
+          <% else %>
+            <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", class: "card-img-top")  %>
+          <% end %>
+    </div>
+  </div>
+  <div class="col-9 px-0 py-2">
+    <p class="text-capitalize"><strong><%= @receiver.name %></strong></p>
+  </div>
+</div>
+
+<%= form_for @personal_message, format: :js, remote: true do |f| %>
+  <%= hidden_field_tag 'receiver_id', @receiver.id %>
+
+    <div class="input-group">
+      <div id="postData" role="textbox" contenteditable="false" aria-multiline="true">
+        <%= f.text_area :body, required: true, id: :post_content, placeholder: "new.html.erb", class: "formtext w-100 p-2 b-0", arialabel: "With textarea"%>
+      </div>
+    </div>
+  
+  <div class="post-br"></div>
+
+  <div class="input-group row">
+    <div class="col-12">
+      <div class="float-right">
+        <%= f.button "Send", disabled: true, class: "post-btn rounded-pill", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Sending..."} %>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="row" id="error-div">
+    
+  </div>  
+<% end %>

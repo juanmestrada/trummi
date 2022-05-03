@@ -1,0 +1,23 @@
+
+<% if !@tag.errors.any? %>
+	
+	<% if @newtag == true %>
+
+		if ($('#error_explanation')[0]) {
+			$('#error_explanation').remove();
+		}
+	  
+		if ($('.no-tags-msg')[0]) {
+	  		$('.no-tags-msg').remove();
+	  	}
+
+	  	$('#all-tags-wr').append('<%= j render @tag, profile: current_user.profile %>');
+
+	  	$('#new-tag')[0].reset();
+	<% else %>
+		$('#error-div').html('<%= j render partial: "tag_exists_message" %>');
+		$('#new-tag')[0].reset();
+	<% end %>
+<% else %>
+	$('#error-div').html('<%= j render partial: "components/error_messages", locals: {object: @tag} %>');
+<% end %>

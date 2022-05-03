@@ -1,0 +1,20 @@
+$('[data-wrid="<%= @post.id %>"] .crying .badge').text('<%= @post.crying_total if @post.crying_total != 0  %>');
+$('[data-wrid="<%= @post.id %>"] .tea .badge').text('<%= @post.tea_total if @post.tea_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .tellmemore .badge').text('<%= @post.tellmemore_total if @post.tellmemore_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .what .badge').text('<%= @post.what_total if @post.what_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .disapproval .badge').text('<%= @post.disapproval_total if @post.disapproval_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .excited .badge').text('<%= @post.excited_total if @post.excited_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .entertained .badge').text('<%= @post.entertained_total if @post.entertained_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .fightme .badge').text('<%= @post.fightme_total if @post.fightme_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .dafuq .badge').text('<%= @post.dafuq_total if @post.dafuq_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .proud .badge').text('<%= @post.proud_total if @post.proud_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .mad .badge').text('<%= @post.mad_total if @post.mad_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .clapping .badge').text('<%= @post.clapping_total if @post.clapping_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .unsure .badge').text('<%= @post.unsure_total if @post.unsure_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .laughing .badge').text('<%= @post.laughing_total if @post.laughing_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .thatsracist .badge').text('<%= @post.thatsracist_total if @post.thatsracist_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .thinkaboutit .badge').text('<%= @post.thinkaboutit_total if @post.thinkaboutit_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .wtf .badge').text('<%= @post.wtf_total if @post.wtf_total != 0 %>');
+$('[data-wrid="<%= @post.id %>"] .crying2 .badge').text('<%= @post.crying2_total if @post.crying2_total != 0 %>');
+
+$('[data-id="imgwr<%= @post.id %>"]').html('<%= j render partial: "components/top_reaction", locals: {post: @post} %>');

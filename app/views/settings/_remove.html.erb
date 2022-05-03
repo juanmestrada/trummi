@@ -1,0 +1,17 @@
+<%= form_with(model: @profile, id: "prof-disable-form", local: true) do |f| %>
+<%= f.hidden_field :isdisabled, value: 1 %>
+<div class="confirm-menu-body">
+  <div class="confirm-title">
+    <div class="text-dark fw-bold mb-1">Disable your account?</div>
+    <span class="small">You can always reactivate your account when you are ready.</span>
+  </div>
+
+  <%= f.button class: 'confirm-item confirm-btn confirm_continue fw-bold', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i>" } do %>
+    <span class="text-danger">Disable</span>
+  <% end %>
+
+  <a class="confirm-item confirm-btn confirm_cancel fw-bold" data-bs-dismiss="modal" role="button" aria-label="Close">
+    <span class="text-dark">Cancel</span>
+  </a>
+</div> 
+<% end %>

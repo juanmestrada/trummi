@@ -1,0 +1,28 @@
+<div class="col-6 col-sm-3 col-lg-2 p-1">
+	<div class="card profile-container border-0">
+	  	<% if profile.image1? %>
+        	<%= link_to image_tag(profile.image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel"), profile_path(profile.id) if profile.image1?%>
+        <% else %>
+            <%= link_to image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel"), profile_path(profile.id) %>
+        <% end %>
+		    
+		<div class="card-body profile-info">
+			<p class="card-title profile-name"><%= profile.name %></strong></p>	
+		</div>
+		<% if profile.id != current_user.profile.id %>
+			<div class="card-body d-flex flex-column profile-links" data-prolinks="<%= profile.id %>">
+				<% if !current_user.profile.blocking?(profile) %>
+					<div class="ph-icon messagei">
+						<%= render partial: "components/message_button", locals: {profileuser: profile} %>		
+					</div>
+					<div class="ph-icon followi">
+						<%= render partial: "components/follow_button", locals: {profileuser: profile} %>
+					</div>
+				<% end %>
+				<div class="ph-icon block_ref">
+                  <%= render partial: "components/block_ref_button", locals: {profileuser: profile, view: ""} %>
+                </div>
+			</div>
+		<% end %>
+	</div>
+</div>

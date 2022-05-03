@@ -1,0 +1,31 @@
+<% content_for :title, "Trummi" %>
+
+<%= render partial: "layouts/mobilenav" %>
+
+<div id="posts-container">
+	<% if @posts.count != 0 %>
+
+		<div class="posts-wr">
+			<%= render @posts %>
+		</div>
+
+		<div class="pagination-wr">
+			<% if @posts.next_page %>
+				<%= link_to posts_path(page: @posts.next_page), class: "pagination-more" do %>
+					<i class='fas fa-plus-circle'></i> 
+					<span>More</span>
+				<% end %> 
+			<% end %>
+		</div>
+
+	<% else %>
+
+	  <div class="post-container text-center mt-3 border-0">
+	    <h6 class="mb-0">There's nothing here.</h6>
+	  </div>
+	  
+	<% end %>
+
+</div>
+
+<%= javascript_pack_tag 'posts' %>

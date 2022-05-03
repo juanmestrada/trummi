@@ -1,0 +1,42 @@
+<% if user_signed_in? && (current_user.profile != profile ) %>
+  <% if !current_user.profile.blocking?(@profile) %>
+    <li class="dropdown-item message">
+      <% if new_conv_or_pm?(profile.id) %>
+        <%= button_to new_personal_message_path, params: {receiver_id: profile.id}, method: :get, remote: true, data: { bs_toggle: "modal", bs_target: "#postModal" } do %>
+          <i class="far fa-envelope"></i>
+          <span>Message</span>
+        <% end %>
+      <% else %>
+        <%= button_to new_personal_message_path, params: {receiver_id: profile.id}, method: :get do %>
+          <i class="far fa-envelope"></i>
+          <span>Message</span>
+        <% end %>
+      <% end %>
+    </li>
+    <li class="dropdown-item follow">
+      <%= render partial: "components/follow_link", locals: {postuser: profile} %>
+    </li>
+  <% end %>
+  <li class="dropdown-item block">
+    <%= render partial: "components/block_link", locals: {postuser: profile} %>
+  </li>
+  <!-- <li class="dropdown-item">
+    <%= link_to profile_path(profile) do %>
+      <i class="far fa-flag"></i>
+      <span>Report</span>
+    <% end %>
+  </li>  -->
+<% else %>
+  <li class="dropdown-item">
+    <%= link_to edit_profile_path(current_user.profile) do %>
+      <i class="fas fa-edit"></i>
+      <span>Edit Profile</span>
+    <% end %>
+  </li>
+<% end %> 
+<li class="dropdown-item">
+  <a data-bs-dismiss="offcanvas">
+    <i class="fas fa-times"></i>
+    <span>Cancel</span> 
+  </a>
+</li>

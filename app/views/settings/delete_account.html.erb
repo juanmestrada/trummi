@@ -1,0 +1,32 @@
+<% content_for :title, "Delete account - Trummi" %>
+
+<div id="disable_delete">
+  <div class="mb-4" align="center">
+    <h4>Permanently Delete Account</h4>
+  </div>
+
+  <div class="fgi">
+    <p>We're sad to see you go. If you're having issues on Trummi, please consider giving us the opportunity to help resolve any problems you may have before deleting your account.</p>
+
+    <p><strong>Once you delete your account all of your information including messages and posts will be permanently deleted.</strong></p>
+  </div>
+
+  <div class="fgi">
+    
+    <p>If you'd like to take a break, you can temporarily disable your account instead. Disabling your account will hide your profile until you decide to reactivate it.</p>
+    
+    <% if !current_user.profile.isdisabled %>
+      <p class="tr-pri-c">
+        <strong>
+            <%= link_to "Disable my account", settings_disable_account_path %>
+        </strong>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="form-group" align="center">
+    <%= button_to user_registration_path(@user), class: 'cancel-btn rounded-pill w-100', data: { confirm: "This cannot be undone. Are you sure?", method: :delete, disable_with: "<i class='fa fa-spinner fa-spin'></i>" } do %>
+      <span class="text-danger">Delete My Account</span>
+    <% end %>
+  </div>
+</div>

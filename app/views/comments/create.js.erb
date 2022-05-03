@@ -1,0 +1,23 @@
+
+<% if !@comment.errors.any? %>
+  $("#notice_wrapper").html("<%= j render partial: 'layouts/flash_notice' %>");
+
+  setTimeout(function() {
+    $('#notice_wrapper div').fadeOut("slow", function() {
+        $(this).remove();
+    })
+  }, 3000)
+
+  $('[data-id="<%= params[:post_id] %>"] .cmntcnt').text('<%= pluralize(@post.comments.count, "Comments") %>');
+  $('[data-id="<%= params[:post_id] %>"] #top-replies').html('<%= j render partial: "comments/top_replies" %>');
+
+  if ($('[data-id="<%= params[:post_id] %>"] .pagination-more').length == 0) {
+    $('[data-id="<%= params[:post_id] %>"] #comments-results').append('<%= j render @comment %>');
+  }
+  
+
+<% else %>
+
+  $('#error-div').html('<%= j render partial: "components/error_messages", locals: {object: @comment } %>');
+  
+<% end %>

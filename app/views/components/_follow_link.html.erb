@@ -1,0 +1,11 @@
+<% if current_user.profile.following?(postuser) %>
+  <%= button_to current_user.profile.active_relationships.find_by(followed_id: postuser.id), method: :delete, remote: true, class: "post-follow" do %>
+    <i class="fas fa-user-minus"></i>
+    <span>Unfollow <%= postuser.name %></span>
+  <% end %>
+<% else %>
+  <%= button_to [current_user.profile.active_relationships.build, followed_id: postuser.id], method: :post, remote: true, class: "post-follow" do %>
+    <i class="fas fa-user-plus"></i>
+    <span>Follow <%= postuser.name %></span>
+  <% end %>
+<% end %>

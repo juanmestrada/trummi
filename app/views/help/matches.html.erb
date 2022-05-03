@@ -1,0 +1,69 @@
+<% content_for :title, "Help Center/Matching - Trummi" %>
+
+<div class="help" id="Matches">
+	<div class="mb-2 cont-header" align="center">
+		<div class="cont-header-profile">
+			<div class="i-wrapper">
+				<%= button_to help_path, method: :get, class: "bg-transparent p-0" do %>
+					<%= image_tag("back.svg", class: "back") %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="cont-header-title">Matching on Trummi</div>
+	</div>
+
+	<div class="d-grid gap-2 mt-5 mb-5">
+		<div >
+	    	<h6><strong>Matching</strong></h6>
+	  	</div>
+		
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#matchCollapse1" aria-expanded="false" >How does matching work?<span class="btn-caret"></span></button>
+
+		<div class="collapse px-2" id="matchCollapse1">
+			<div class="card card-body border-0">
+				<p>Our mission at Trummi is to connect users with similiar interests or ideas. By adding tags that are relevant to you, you are able to discover others that also have the same tags.</p>
+
+				<p>On the My Matches Page, users will see a list of other users they share one or more tags with. This list of users may be filtered using the available options. Only users that share the same tags will appear in search results.</p>
+
+				<p><strong>Trummi will never alert users about which tags they share with others.</strong></p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#matchCollapse2" aria-expanded="false" >Can I search for users that don't have the same tags as me?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="matchCollapse2">
+			<div class="card card-body border-0">
+				<p>No. Users must share at least one tag in order to appear in search results.</p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#matchCollapse3" aria-expanded="false" >Can I hide my tags from others?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="matchCollapse3">
+			<div class="card card-body border-0">
+				<p>We encourage users to be as transparent as they feel comfortable with but understand it may be scary to put yourself out there for all to see. Users have the option to hide all of their tags from view. Individual tags may not be hidden.</p>
+
+				<p><strong>Making tags private does not prevent your profile from appearing in search results for users that share one or more tags with you.</strong></p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#matchCollapse4" aria-expanded="false" >Is there an age limit for matching with someone?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="matchCollapse4">
+			<div class="card card-body border-0">
+				<p>Trummi understands how important it is to keep children safe on social media and we do our best to provide a safe place for them.</p>
+
+				<p>Users under the age of 18 may only interact with others of the same age range. This includes <strong>All</strong> interactions on Trummi. Adults over the age of 18 will only be able to interact with other adult users regardless if they share the same tags.</p>
+			</div>
+		</div>
+
+		<button class="help-btn" type="button" data-bs-toggle="collapse" data-bs-target="#matchCollapse5" aria-expanded="false" >Can I unmatch someone that shares one or more tags with me?<span class="btn-caret"></span></button>
+		
+		<div class="collapse px-2" id="matchCollapse5">
+			<div class="card card-body border-0">
+				<p>At the moment, the only option to deny a user access to your profile is to block them.</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+#fol-bloc-cont{
+	position: relative;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    height: calc(100vh - 165px);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15) !important;
+    overflow-y: scroll;
+    padding: 0 50px;
+    padding-bottom: 10px;
+    .fol-bloc-results{
+    	position: relative;
+    }
+}
+
+@media (min-width:960px) and (max-width: 1400px){
+
+	#fol-bloc-cont{
+		width: 90%;
+	}
+	
+}
+
+@media screen and (max-width:959px) {
+	#fol-bloc-cont{
+		padding: 0 10px;
+		margin-top: 0;
+		width: 100%;
+		height: calc(100vh - 45px);
+		height: calc(var(--vh, 1vh) * 100 - 45px);
+		border-radius: 0;
+		padding-bottom: 40px;
+		box-shadow: none !important;
+	}
+}

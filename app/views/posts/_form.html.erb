@@ -1,0 +1,44 @@
+<%= form_with(model: @post, multipart: true, id: "new_post")  do |form| %>
+  <div class="modal-header">
+    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>          
+  </div>
+  
+  <div class="input-group px-3 pb-1">
+    <div id="postData" role="textbox" contenteditable="false" aria-multiline="true">
+      <div class="image-preview" id="imagePreview">
+        <img src="" alt="Image Preview" class="image-preview_image">
+        <!-- <button type="button" class="close " aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button> -->
+        <div class="edit-img-btn-wr"><div class="edit-img-btn edit-remove"></div></div>
+      </div>
+      <%= form.text_area :content, required: true, id: :post_content, placeholder: "Whats on your mind?", class: "formtext w-100 p-2 border-0", arialabel: "With textarea"%>
+    </div>
+  </div>
+
+  <!-- <div class="post-br"></div> -->
+
+  <div class="row px-3" id="error-div">
+    
+  </div> 
+
+  <div class="input-group justify-content-between">
+    
+    <label class="custom-file">
+      <svg viewBox="0 0 24 24" class="imsv" fill="#6a7bff">
+        <g>
+          <path d="M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z">
+          </path>
+          <circle cx="8.868" cy="8.309" r="1.542"></circle>
+        </g>
+      </svg>
+      <%= form.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "custom-file-input invisible d-none", id: "inpFile" %>
+    </label>
+
+    <div class="text-end px-2 pb-2">
+      <%= form.button "Post", disabled: true, class: "post-btn rounded-pill", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>"} %>
+    </div>
+  </div>  
+  
+<% end %>
+

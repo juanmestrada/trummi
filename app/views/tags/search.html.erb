@@ -1,0 +1,15 @@
+<div class="row search-results">
+	<% if @matches.count != 0 %>
+		<% @matches.each do |match| %>
+			<div class="col-md-10">
+				<div>
+					<p><%= link_to match.name, tag_path(match) %><span class="badge badge-secondary"></span></p>
+				</div>
+			</div>
+		<% end %>
+	<% else %>
+		<div class="post-container text-center">
+			That tag hasn't been added yet. Check again later.
+		</div>
+	<% end %>
+</div>

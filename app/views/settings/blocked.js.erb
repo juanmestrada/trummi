@@ -1,0 +1,9 @@
+$('.fol-bloc-results').append('<%= j render(@blocked) %>');
+<% if @blocked.next_page %>
+	$('.pagination-more').attr('href', '<%= settings_blocked_path(page: @blocked.next_page) %>')
+	$('.pagination-more').html("<i class='fas fa-plus-circle'></i> <span>More</span>");
+<% else %>
+	$('.pagination-more').parent().css('padding-bottom', '0');
+	$('.pagination-more').remove();
+<% end %>
+<% sleep 1 %>

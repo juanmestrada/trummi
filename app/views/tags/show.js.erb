@@ -1,0 +1,8 @@
+$('.tag-cont-results').append('<%= j render(@tag_profiles) %>');
+<% if @tag_profiles.next_page %>
+	$('.pagination-more').removeClass('disabled');
+	$('.pagination-more').attr('href', '<%= tag_path(page: @tag_profiles.next_page) %>');
+	$('.pagination-more').html("<i class='fas fa-plus-circle'></i> <span>More</span>");
+<% else %>
+	$('.pagination-more').remove();
+<% end %>

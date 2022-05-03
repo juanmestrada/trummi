@@ -1,0 +1,83 @@
+// $('.post-container[data-user="<%= @profile.id %>"]').hide(); 
+// post views: _post partial
+if ($('.post-container[data-profile="<%= @profile.id %>"] .post-dropdown')[0]) {
+	$('.post-container[data-profile="<%= @profile.id %>"] .post-header .post-dropdown .follow').children().hide();
+	$('.post-container[data-profile="<%= @profile.id %>"] .post-header .post-dropdown .block').html('<%= j render partial: "components/block_link", locals: {postuser: @profile} %>');
+	$('.post-container[data-profile="<%= @profile.id %>"] .post-header .card-img-top[data-bs-content]').attr('data-bs-content', '<%= j render partial: "components/profile_card", locals: {p: @profile} %>');
+}
+
+// profile show view
+if ($('.profile-center-container')[0]) {
+	
+	$('.profile-left-container .p-details').addClass("d-none");
+
+	// Remove all profile images except main
+	$('.carousel-inner').find(".carousel-item.img1").addClass("active");
+	$('.carousel-inner .img2').addClass("d-none");
+	$('.carousel-inner .img3').addClass("d-none");
+	$('.carousel-inner .img4').addClass("d-none");
+
+	if($('.info-wrapper').is(":hidden")){
+		$('.info-wrapper').show();
+	}
+
+	// Update view for blocked profile
+	if ($('#mobiletabs').is(":hidden")) {
+		// For desktop
+		$('.profile-center-container').find('.profile-center-posts').addClass("d-none");
+		$('.profile-center-container').append('<%= j render "block_message" %>');
+
+		$('.profile-right-container').find('.sect-wr').addClass("d-none");
+
+		// hide image carousel controls
+		$('.carousel-indicators').addClass("d-none");
+		$('.carousel-control-prev').addClass("d-none");
+		$('.carousel-control-next').addClass("d-none");
+	} else {
+		// For mobile
+		$('#mobiletabs #m-Posts').addClass("d-none");
+		$('#mobiletabs #m-Friends').addClass("d-none");
+		$('#mobiletabs #m-Images').addClass("d-none");
+
+		$('.profile-center-container').addClass("d-none").hide();
+		$('.profile-right-container').addClass("d-none").hide();
+	}
+}
+
+// profile links views: profile_show, profile_card
+if ($('[data-prolinks="<%= @profile.id %>"]')[0]) {
+	
+	$('[data-prolinks="<%= @profile.id %>"] .messagei').hide();
+	$('[data-prolinks="<%= @profile.id %>"] .followi').hide();
+	$('[data-prolinks="<%= @profile.id %>"] .messagei').children('a').remove();
+	$('[data-prolinks="<%= @profile.id %>"] .followi').children('form').remove();
+	$('[data-prolinks="<%= @profile.id %>"] .block_ref').html('<%= j render partial: "components/block_ref_button", locals: { profileuser: @profile, view: "" } %>');
+
+	// remove params for refresh
+	$('[data-prolinks="<%= @profile.id %>"] .block_ref').find('input[name="view"]').remove();
+}
+
+// popover visible
+if ($('.popover')[0]) {
+	$('.popover .popover-body').html('<%= j render partial: "components/profile_card", locals: { p: @profile } %>');
+}
+
+
+// comment views: _comment partial
+if ($('#comments')[0]) {
+	$('.c-wrapper[data-profile="<%= @profile.id %>"] .cmt-header .post-dropdown .follow').children().hide();
+	$('.c-wrapper[data-profile="<%= @profile.id %>"] .cmt-header .post-dropdown .block').html('<%= j render partial: "components/block_link", locals: { postuser: @profile } %>');
+	$('.c-wrapper[data-profile="<%= @profile.id %>"] .chi .card-img-top').attr('data-bs-content', '<%= j render partial: "components/profile_card", locals: { p: @profile } %>');
+}
+
+// profile dropdown [mobile]
+if ($('.pp-d')[0]) {
+	$('.pp-d .post-dropdown').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @profile } %>');
+}
+
+// Update existing offcanvas
+if ($('#offcanvasMobile')[0] && $('#offcanvasMobile').hasClass('show')) {
+	$('#offcanvasMobile .offcanvas-body .message').children().hide();
+	$('#offcanvasMobile .offcanvas-body .follow').children().hide();
+	$('#offcanvasMobile .offcanvas-body .block').html('<%= j render partial: "components/block_link", locals: { postuser: @profile } %>');
+}

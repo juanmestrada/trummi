@@ -1,0 +1,6 @@
+
+// 		if ($('#all-tags-wr').find('.tag').length == 0) {
+// 			$('#all-tags-wr').append('<%= j render partial: "no_tag_message" %>');
+// 		}
+
+$('.tag[data-id="<%= @profile_tag.tag_id  %>"]').remove();

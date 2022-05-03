@@ -1,0 +1,27 @@
+<% if post.max_reaction[1] != 0 %>
+    <div class="col imgwr">
+        <div class="header-img">
+            <% case post.max_reaction[0] 
+                    when "" %>''
+                <% when "crying" %><%= image_tag("crying.jpg", height: "100%", width: "100%", draggable:"false") %>
+                <% when "tea" %><%= image_tag("tea.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "tellmemore" %><%= image_tag("tell-me-more.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "what" %><%= image_tag("what.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "disapproval" %><%= image_tag("disapproval.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "excited" %><%= image_tag("excited.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "entertained" %><%= image_tag("entertained.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "fightme" %><%= image_tag("fightme.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "dafuq" %><%= image_tag("dafuq.png", height: "100%", width: "100%", draggable:"false") %>
+                <% when "proud" %><%= image_tag("proud.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "mad" %><%= image_tag("mad.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "clapping" %><%= image_tag("clapping.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "unsure" %><%= image_tag("unsure.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "laughing" %><%= image_tag("laughing.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "thatsracist" %><%= image_tag("thats-racist.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "thinkaboutit" %><%= image_tag("thinkaboutit.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "wtf" %><%= image_tag("wtf.gif", height: "100%", width: "100%", draggable:"false") %>
+                <% when "crying2" %><%= image_tag("crying2.gif", height: "100%", width: "100%", draggable:"false") %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

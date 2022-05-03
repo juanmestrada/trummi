@@ -1,0 +1,64 @@
+<% content_for :title, "Sign Up - trummi" %>
+
+<div id="sessions">
+
+  <div class="mb-5">
+    <h5 class="mb-2">Welcome to <span class="tr-pri-c"><strong>trummi</strong></span></h5>
+    <h3>Let's start with the basics</h3>
+  </div>
+
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <div class="form-group mb-4">
+      <div class="form-floating">
+        <%= f.email_field :email, placeholder: "Email", autocomplete: "email", type: "email", class: "form-control shadow-sm bg-white rounded", id: "floatingInput" %>
+        <label for="floatingInput">Email address</label>
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
+      <div class="form-floating mb-2">
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "off", type: "password", class: "form-control shadow-sm bg-white rounded", id: "floatingPassword" %>
+        <label for="floatingPassword">Password</label> 
+      </div>
+      
+      <% if @minimum_password_length %>
+        <span class="text-secondary"><small>(<%= @minimum_password_length %> characters minimum)</small></span>
+      <% end %> 
+    </div>
+
+    <div class="form-group mb-4">
+      <div class="form-floating">
+        <%= f.password_field :password_confirmation, placeholder: "Confirm password", autocomplete: "off", type: "password", class: "form-control shadow-sm bg-white rounded" %>
+        <label for="floatingPassword">Password confirmation</label> 
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <h6 class="mb-0">Date of birth</h6>
+      <p class="mb-2"><small>Confirm your own age before submitting.</small></p>
+      <div class="row">
+        <%= f.date_select :dob, { order: [:month, :day, :year], start_year: 1900, end_year: Date.current.year - 10, prompt: { day: 'Day', month: 'Month', year: 'Year' }}, { class: ' form-select bg-white select-col', required: true} %>
+      </div>
+    </div>
+
+   
+
+    <div class="row mb-2" id="error-div">
+      <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
+
+    <div class="form-group mb-4">
+      <%= f.button "Sign Up", class: "post-btn rounded-pill w-100", data: {disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %>
+    </div>
+
+    <div class="form-group" align="center">
+      <%- if devise_mapping.registerable? && controller_name != 'sessions' %>
+        <div>
+          Already have an account? <span class="tr-pri-c"><%= link_to "Log in", new_session_path(resource_name) %></span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

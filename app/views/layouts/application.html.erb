@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0">
+    <%= csp_meta_tag %>
+    
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_pack_tag 'tr-icon.png' %>
+    <!--<%= javascript_pack_tag '1351' %>-->
+    
+  </head>
+
+  <body>
+    
+    <div id="notice_wrapper" class="align-items-center">
+      <% if notice %>
+        <%= render 'layouts/flash_notice' %>
+      <% end %>
+    </div>
+    
+    <div id="alert_wrapper" class="align-items-center">
+      <% if alert %>
+        <%= render 'layouts/flash_alert' %>
+      <% end %> 
+    </div>
+    
+
+    <%= render '/layouts/nav' %> 
+
+    <% if user_signed_in? %>
+    <!-- Modal -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="modal-post-content">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Image Modal -->
+    <div class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="imgModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          
+          <button class="modal-close" data-bs-dismiss="modal" aria-label="Close"><div class="edit-img-btn edit-remove"></div></button>
+          <div class="modal-body">
+            <img src="" id="ImgM" width="100%" height="auto">
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="app-container <%= @full_page ? 'cont-bg' : '' %>">  
+      <%= yield %>
+
+      <% if !current_page?(controller:"/dashboard", action:'welcome') && !current_page?(welcome_path) %>
+        <%= render '/layouts/footer' %> 
+      <% end %>
+    </div>
+
+  </body>
+</html>

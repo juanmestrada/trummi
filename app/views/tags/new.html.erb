@@ -1,0 +1,40 @@
+<% content_for :title, "My Tags - Trummi" %>
+
+<div id="tag-container">
+	
+	<%= render "form" %>
+
+	<div class="tag-lw">
+		<div id="error-div">
+    
+	  	</div>
+		
+		<div class="row mt-5">
+			<h5 class="tr-pri-c p-0"><strong>Your Tags</strong></h5>
+			<div class="col-12 p-0">
+				<p>Tags are words or phrases that are essential in connecting you with other people sharing the same interests or ideas. They may include hobbies, important causes or issues, personality traits or any other topics that help give others an idea of what is important to you.</p>
+
+				<p>Unlike tags or #hashtags used on other platforms, the goal here at <span class="tr-pri-c"><strong>trummi</strong></span> is to use tags that describe you, your ideas or anything important someone should know when learning about you. We believe that honesty is a great foundation when building new lasting friendships.</p>
+
+				<p><strong><small>Be your true self.</small></strong></p>
+			</div>
+		</div>
+	    <!--  -->
+	    <div id="all-tags-cont" class="pback rounded mb-3" >
+		    <div id="all-tags-wr" class="row">
+		      <% if current_user.profile.tags.any? %>
+		      	<%= render current_user.profile.tags, profile: current_user.profile %>
+		      <% else %> 
+		        <%= render "no_tag_message" %>
+		      <% end %>
+		    </div>
+		</div>
+
+		<div align="center">
+			<small>
+				<p><i class="fas fa-exclamation-circle align-baseline"></i><span class="ms-1"><strong>Only use tags that you are comfortable sharing with others. Tags may be hidden from other users but your profile will still appear in search results for those that share the same tag.</strong></span></p>
+			</small>
+		</div>
+	</div>
+	
+</div>

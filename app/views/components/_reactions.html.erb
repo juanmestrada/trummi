@@ -1,0 +1,125 @@
+<div class="crying">
+  <%= button_to crying_reaction_post_path(post), params: {crying_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("crying.jpg", class: "reaction-icon", draggable:"false") %>
+    <span class="badge bg-dark"><%= number_to_human(post.crying_total) if post.crying_total != 0 %></span>
+  <% end %> 
+</div>
+
+<div class="tea">
+  <%= button_to tea_reaction_post_path(post), params: {tea_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent" do %>
+    <%= image_tag("tea.gif", class: "reaction-icon", draggable:"false") %>
+    <span class="badge bg-dark"><%= number_to_human(post.tea_total) if post.tea_total != 0 %></span>
+  <% end %> 
+</div>
+
+<div class="tellmemore">
+  <%= button_to tellmemore_reaction_post_path(post), params: {tellmemore_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("tell-me-more.gif", class: "reaction-icon", draggable:"false") %>
+    <span class="badge bg-dark"><%= number_to_human(post.tellmemore_total) if post.tellmemore_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="what">
+  <%= button_to what_reaction_post_path(post), params: {what_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("what.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.what_total) if post.what_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="disapproval">
+  <%= button_to disapproval_reaction_post_path(post), params: {disapproval_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("disapproval.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.disapproval_total) if post.disapproval_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="excited">
+  <%= button_to excited_reaction_post_path(post), params: {excited_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("excited.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.excited_total) if post.excited_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="entertained">
+  <%= button_to entertained_reaction_post_path(post), params: {entertained_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("entertained.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.entertained_total) if post.entertained_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="fightme">
+  <%= button_to fightme_reaction_post_path(post), params: {fightme_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("fightme.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.fightme_total) if post.fightme_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="dafuq">
+  <%= button_to dafuq_reaction_post_path(post), params: {dafuq_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("dafuq.png", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.dafuq_total) if post.dafuq_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="proud">
+  <%= button_to proud_reaction_post_path(post), params: {proud_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("proud.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.proud_total) if post.proud_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="mad">
+  <%= button_to mad_reaction_post_path(post), params: {mad_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("mad.gif", class: "reaction-icon", draggable:"false") %>
+    <span class="badge bg-dark"><%= number_to_human(post.mad_total) if post.mad_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="clapping">
+  <%= button_to clapping_reaction_post_path(post), params: {clapping_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("clapping.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.clapping_total) if post.clapping_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="unsure">
+  <%= button_to unsure_reaction_post_path(post), params: {unsure_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("unsure.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.unsure_total) if post.unsure_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="laughing">
+  <%= button_to laughing_reaction_post_path(post), params: {laughing_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("laughing.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.laughing_total) if post.laughing_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="thatsracist">
+  <%= button_to thatsracist_reaction_post_path(post), params: {thatsracist_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("thats-racist.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.thatsracist_total) if post.thatsracist_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="thinkaboutit">
+  <%= button_to thinkaboutit_reaction_post_path(post), params: {thinkaboutit_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("think-about-it.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.thinkaboutit_total) if post.thinkaboutit_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="wtf">
+  <%= button_to wtf_reaction_post_path(post), params: {wtf_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("wtf.gif", class: "reaction-icon", draggable:"false") %>
+  <span class="badge bg-dark"><%= number_to_human(post.wtf_total) if post.wtf_total != 0 %></span>
+  <% end %>
+</div>
+
+<div class="crying2 me-3">
+  <%= button_to crying2_reaction_post_path(post), params: {crying2_reaction: true}, method: :post, remote: true, class: "p-0 bg-transparent"  do %>
+    <%= image_tag("crying2.gif", class: "reaction-icon", draggable:"false") %>
+    <span class="badge bg-dark"><%= number_to_human(post.crying2_total) if post.crying2_total != 0 %></span>
+  <% end %>
+</div>

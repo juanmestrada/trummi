@@ -1,0 +1,42 @@
+<div class="col-12 cp-wr" data-id="<%= conversation.id %>">
+  <div class="cp <%= 'bold' if (conversation.personal_messages.last.receiver.id == current_user.profile.id) && conversation.personal_messages.last.read == false %>">
+    <div class="row" >
+      <div class="col-auto ps-0 pe-1 my-auto">
+        <div class="header-img float-end">
+          <% if conversation.with(current_user.profile).image1? %>
+            <%= image_tag(conversation.with(current_user.profile).image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") if conversation.with(current_user.profile).image1? %>
+          <% else %>
+            <%= image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
+          <% end %> 
+        </div>
+        
+      </div>
+      <div class="col-9 px-1 conv-lnk"> 
+        <%= link_to conversation_path(conversation), class: "row" do %>
+          <div class="col-12 p-0">
+            <p class="m-0">
+              <strong><%= conversation.with(current_user.profile).name %></strong>
+              <span class="float-end text-secondary"><%= time_ago_in_words(conversation.personal_messages.last.created_at) %> ago</span>
+            </p>
+          </div>
+          <div class="col-12 p-0">
+            <p class="card-text text-secondary">
+              <%= sanitize conversation.personal_messages.last.body %> <br>
+            </p> 
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-1 ma">
+        <i class="fas fa-ellipsis-v float-end rounded-circle" data-behavior='convset'></i>
+      </div>
+    </div>
+  </div>
+  <div class="cpdel-c">
+    <div class="cpdel">
+      <%= button_to remove_conversation_path(conversation), form_class: "confirm-modal", method: :get, remote: true, data: { bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation"} do %>
+        <div class="m-del"><i class="far fa-trash-alt"></i></div>
+      <% end %>
+    </div>
+  </div>
+</div>

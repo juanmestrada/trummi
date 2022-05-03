@@ -1,0 +1,78 @@
+<div class="row c-wrapper" data-id="<%= comment.id %>" data-profile="<%= comment.profile.id %>">
+	<div class="col-2 header-img chi">
+		
+		<% if comment.profile.image1? %>
+      <%= link_to image_tag(comment.profile.image1.url(:thumb), height: "100%", width: "100%", class: "card-img-top m-no-sel", draggable:"false", data: { bs_toggle: "popover-prof", bs_placement: "bottom", bs_content: "#{render partial: 'components/profile_card', locals: {p: comment.profile}}" }),  profile_path(comment.profile.id)  %>
+    <% else %>
+      <%= link_to image_tag("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png", height: "100%", width: "100%", class: "card-img-top m-no-sel", draggable:"false", data: { bs_toggle: "popover-prof", bs_placement: "bottom", bs_content: "#{render partial: 'components/profile_card', locals: {p: comment.profile}}" }), profile_path(comment.profile.id)  %>
+  	<% end %>
+
+	</div>
+	<div class="col-10 p-0">
+		<div class="row cmt-header">
+      <div class="col-11 p-0">
+        <div class="text-dark h-inl">
+          <strong><%= comment.profile.name %><%= image_tag("verified.svg", height: "15px", class: "align-text-bottom") if comment.profile.verified? %></strong>
+        </div>
+        <div class="htsmall h-inl">
+          <!-- <span class="h-username">@<%= comment.profile.username %></span> -->
+          <span><small> - <%= time_ago_in_words(comment.created_at) %> ago</small></span>
+        </div>
+      </div>
+      <div class="col-1 p-0">
+        <div class="p-0 text-end hspan pdrop"> 
+          <button class="pdrop-btn post-desk-menu" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <i class="fas fa-ellipsis-v rounded-circle"></i>
+          </button>
+
+          <a class="post-mob-menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMobile" role="button">
+            <i class="fas fa-ellipsis-v rounded-circle"></i>
+          </a>
+      
+          <ul class="dropdown-menu post-dropdown p-0">
+            <% if user_signed_in? && (current_user == comment.profile.user || current_user.admin? ) %>
+              <li class="dropdown-item">
+                
+                <%= button_to remove_post_comment_path(comment.post, comment), method: :get, remote: true, class: "confirm-modal", data: { bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation"} do %>
+                  <i class="far fa-trash-alt text-danger"></i> 
+                  <span class="text-danger">Delete</span>
+                <% end %>
+
+              </li>
+            <% else %>
+              <li class="dropdown-item follow">
+                <%= render partial: "components/follow_link", locals: { postuser: comment.profile} %>
+              </li>
+
+              <li class="dropdown-item block">
+                <%= render partial: "components/block_link", locals: { postuser: comment.profile} %>
+              </li>
+
+              <!-- <li class="dropdown-item">
+                <%= link_to profile_path(comment.profile) do %>
+                  <i class="far fa-flag"></i>
+                  <span>Report</span>
+                <% end %>
+              </li>  -->
+            <% end %> 
+            
+            <li class="dropdown-item">
+              <a>
+                <i class="fas fa-times"></i>
+                <span>Cancel</span> 
+              </a>
+            </li>
+          </ul>  
+        </div>
+      </div>
+			
+		</div>
+
+		<div class="row">
+      <div class="col-11 p-0">
+        <p class="card-text text-dark"><%= comment.content %></p>
+      </div>
+		</div>
+	</div>
+    
+</div>

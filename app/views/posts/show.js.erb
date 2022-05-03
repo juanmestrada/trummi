@@ -1,0 +1,8 @@
+$('#comments-results').append('<%= j render(@comments) %>');
+<% if @comments.next_page %>
+	$('.pagination-more').removeClass('disabled');
+	$('.pagination-more').attr('href', '<%= post_path(page: @comments.next_page) %>');
+	$('.pagination-more').html("<i class='fas fa-plus-circle'></i> <span>More</span>");
+<% else %>
+	$('.pagination-more').remove();
+<% end %>

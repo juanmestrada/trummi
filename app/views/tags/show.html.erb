@@ -1,0 +1,31 @@
+<% content_for :title, " Profiles Matching #{@tag.name.capitalize} - Trummi" %>
+
+<div id="tag-container">
+	
+	<div class="mb-2 cont-header" align="center">
+		<div class="cont-header-profile">
+			<div class="i-wrapper">
+				<%= button_to matches_path, method: :get, class: "bg-transparent p-0" do %>
+					<%= image_tag("back.svg", class: "back") %>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="cont-header-title">Profiles with "<%= @tag.name.capitalize %>"</div>
+	</div>
+
+	<div class="row tag-cont-results">
+	
+		<%= render @tag_profiles %>
+		
+	</div>
+
+	<div class="pagination-wr">
+		<% if @tag_profiles.next_page %>
+			<%= link_to tag_path(page: @tag_profiles.next_page), class: "pagination-more" do %>
+				<i class='fas fa-plus-circle'></i> 
+				<span>More</span>
+			<% end %>
+		<% end %>
+	</div>
+</div>

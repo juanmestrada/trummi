@@ -1,0 +1,11 @@
+$('.cp-wr[data-id="<%= @conversation.id %>"]').remove();
+
+// remove notifications if any
+if ($('a[data-notifiable-id="<%= @conversation.id %>"]')) {
+	$('a[data-notifiable-id="<%= @conversation.id %>"]').parent().remove();
+}
+// remove notification alert if none
+if ($("[data-behavior='notification-items']").find('a[data-notifiable-id]').length == 0) {
+	$("[data-behavior='unread']").css({opacity: 0});
+	$('.notification-menu').append('<li class="dropdown-item text-center pe-none p-2">There\'s nothing here</li>');
+}

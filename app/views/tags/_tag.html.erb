@@ -1,0 +1,12 @@
+<div class="tag w-auto" data-id="<%= tag.id %>">
+	<div class="d-flex align-items-center b rounded-pill">
+		<%= link_to(tag.name, tag_path(tag)) %>
+		<% if profile.user == current_user %>
+      		<div class="p-btn-wr">
+      			<%= button_to remove_tag_path(tag), method: :get, remote: true, class: "bg-transparent p-0", title: "remove", form_class: "delete", data: { bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation" } do %>
+			    	<%= image_tag("cancel.svg", class: "edit-img-btn") %>
+			    <% end %>
+            </div>
+      	<% end %>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<% if current_user.profile.blocking?(profileuser) %>
+  <%= button_to remove_block_path(profileuser.id), class: "confirm-modal", title: "Unblock", remote: true, method: :get, params: {view: view}, data: { bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation"} do %>
+    <i class="fas fa-undo"></i>
+  <% end %>
+<% else %>
+  <%= button_to remove_block_path(profileuser.id), class: "confirm-modal", title: "Block", remote: true, method: :get, data: { bs_toggle: "modal", bs_target: "#postModal", bs_backdrop: "static", istype: "confirmation"} do %>
+    <i class="fas fa-ban"></i>
+  <% end %>
+<% end %>
