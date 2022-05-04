@@ -2,7 +2,7 @@
 lock "~> 3.17.0"
 
 set :application, "trummi"
-set :repo_url, "git@github.com:truefiremedia/trummi.git"
+set :repo_url, "https://github.com/truefiremedia/trummi.git"
 set :branch, 'main'
 set :user, 'deploy'
 
