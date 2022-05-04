@@ -46,7 +46,11 @@ server "165.227.121.241", user: "deploy", roles: %w{app db web}
  #   forward_agent: true,
  #   auth_methods: %w(publickey)
  # }
- set :ssh_options, { :forward_agent => true }
+
+ set :ssh_options, {
+    forward_agent: true,
+    user: 'deploy',
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
