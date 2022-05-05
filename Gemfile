@@ -58,6 +58,9 @@ gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 
+# gem 'mimemagic', '~> 0.3.10'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
