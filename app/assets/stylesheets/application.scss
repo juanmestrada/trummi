@@ -889,27 +889,27 @@ i{
 }
 
 .follow-icon{
-	background: url(follow.svg);
+	background: asset-url("follow.svg");
 	outline: none;
 }
 
 .unfollow-icon{
-	background: url(unfollow.svg);
+	background: asset-url("unfollow.svg");
 	outline: none;
 }
 
 .block-icon{
-	background: url(block.svg);
+	background: asset-url("block.svg");
 	outline: none;
 }
 
 .unblock-icon{
-	background: url(unblock.svg);
+	background: asset-url("unblock.svg");
 	outline: none;
 }
 
 .message-icon{
-	background: url(message-icon.png);
+	background: asset-url("message-icon.png");
 }
 
 .icon{

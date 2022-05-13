@@ -75,13 +75,13 @@
 .help-btn[aria-expanded="false"]{
 	
 	.btn-caret{
-		background-image: url("expand_more.svg");
+		background-image: asset-url("expand_more.svg");
 	}
 }
 .help-btn[aria-expanded="true"]{
 	background-color: #f7f5ff;
 	.btn-caret{
-		background-image: url("expand_less.svg");
+		background-image: asset-url("expand_less.svg");
 	}
 }
 
