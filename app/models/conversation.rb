@@ -35,7 +35,7 @@ class Conversation < ApplicationRecord
 
   scope :last_author_pm, -> {
     joins(:personal_messages)
-    .group('personal_messages.conversation_id')
+    .group('conversations.id')
     .having('personal_messages.id = (SELECT MAX(personal_messages.id))')
     .where('personal_messages.author_destroy = false')
   }
@@ -49,7 +49,7 @@ class Conversation < ApplicationRecord
 
   scope :last_receiver_pm, -> {
     joins(:personal_messages)
-    .group('personal_messages.conversation_id')
+    .group('conversations.id')
     .where('personal_messages.receiver_destroy = false')
     .having('personal_messages.id = (SELECT MAX(personal_messages.id))')
   }
