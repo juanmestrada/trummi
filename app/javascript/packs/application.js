@@ -12,10 +12,13 @@ require("@popperjs/core")
 
 import * as bootstrap from 'bootstrap';
 import { Tooltip, Popover } from "bootstrap"
+
+import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/css/solid.css";
 require("../stylesheets/application.scss")
 
 require("packs/jquery.easy-autocomplete")
-import "@fortawesome/fontawesome-free/css/all.css";
+
 
 import "./jquery";
 // Uncomment to copy all static images under ../images to the output folder and reference

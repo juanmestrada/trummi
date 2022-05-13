@@ -12,7 +12,6 @@
  *
  *
  *= require bootstrap
- *= require font-awesome
  *= require easy-autocomplete
  *= require easy-autocomplete.themes
  *= require_tree .
@@ -22,6 +21,7 @@
 // @import "bootstrap/scss/bootstrap";
 // @import "/\*";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html{
 	scroll-behavior: smooth;
 }

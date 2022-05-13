@@ -757,13 +757,13 @@
 }
 
 .edit-add{
-	background: url('add_circle.svg');
+	background: asset-url('add_circle.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 }
 
 .edit-remove{
-	background: url('cancel.svg');
+	background: asset-url('cancel.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 }
