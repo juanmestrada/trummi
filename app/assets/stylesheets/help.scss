@@ -50,8 +50,8 @@
     }
     .list-group-item{
     	color: inherit;
-    	i{
-    		vertical-align: baseline;
+    	i, svg{
+    		vertical-align: text-bottom;
     	}
     }
 }

@@ -217,9 +217,7 @@ input[type=text]:focus, textarea:focus {
 				width: fit-content;
 				margin: auto;
 				opacity: .6;
-				i{
-					font-size: 20px;
-				}
+				
 				
 				&:hover{
 					opacity: 1;
@@ -422,7 +420,9 @@ input[type=text]:focus, textarea:focus {
 	i{
 		color: #b5bdff;
 	}
-	
+	svg{
+		color: #b5bdff;
+	}
 }
 
 .l-fil{
@@ -1000,6 +1000,11 @@ textarea{
 		}
 	}
 
+	.nav-i{
+		font-size: 20px;
+		margin-bottom: 2px;
+	}
+
 	.mo{
 		display: none;
 	}
@@ -1101,7 +1106,13 @@ textarea{
 			}
 			
 		}
+		
 	}
+
+	.nav-i{
+		font-size: 24px;
+	}
+
 	.footer-main {
 		display: none;
 	}

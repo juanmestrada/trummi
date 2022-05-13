@@ -13,10 +13,12 @@ require("@popperjs/core")
 import * as bootstrap from 'bootstrap';
 import { Tooltip, Popover } from "bootstrap"
 
-import "@fortawesome/fontawesome-free/css/all.css";
-import "@fortawesome/fontawesome-free/css/solid.css";
-require("../stylesheets/application.scss")
+// import "@fortawesome/fontawesome-free/css/all.css";
+// import "@fortawesome/fontawesome-free/css/solid.css";
 
+require("../stylesheets/application.scss")
+import "@fortawesome/fontawesome-free/js/all";
+import "@fortawesome/fontawesome-free/css/all";
 require("packs/jquery.easy-autocomplete")
 
 

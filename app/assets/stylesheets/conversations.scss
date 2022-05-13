@@ -166,7 +166,7 @@
     		z-index: 20;
     	}
     	.fa-ellipsis-v{
-    		padding: 0.445em 0.757em;
+    		// padding: 0.445em 0.757em;
     	}
 	}
 	.cp{
@@ -220,12 +220,16 @@
 			    text-align: center;
 			    border-radius: 50%;
 			    font-size: 20px;
+			    color: #2d3c48;
 				i{
 					color: #2d3c48;
 					font-size: 18px;
 				}
 				&:hover{
 					background: rgba(238,235,255,.4);
+				}
+				.fa-trash-alt{
+					vertical-align: middle;
 				}
 			}
 			button{
