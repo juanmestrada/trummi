@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     # # .includes(:profile, :crying_reactions, :tea_reactions, :tellmemore_reactions, :what_reactions, :disapproval_reactions, :excited_reactions, :entertained_reactions, :fightme_reactions, :dafuq_reactions, :proud_reactions, :mad_reactions, :clapping_reactions, :unsure_reactions, :laughing_reactions, :thatsracist_reactions, :thinkaboutit_reactions, :wtf_reactions, :crying2_reactions)
     @comments = @post.comments.joins(:profile).merge(Profile.notdisabled.notblocked(current_user.profile.blocking.ids, current_user.profile.blockers.ids)).paginate(page: params[:page], per_page: 10)
     
-    @commenters = @post.comments.select(:profile_id).where(profile_id: current_user.profile.following.ids).order(:created_at).distinct
+    @commenters = @post.comments.where(profile_id: current_user.profile.following.ids).order(:created_at).distinct
 
     if @post.user == current_user
       Notification.where({recipient: current_user, notifiable_id: @post.id , notifiable_type: "Post"}).destroy_all

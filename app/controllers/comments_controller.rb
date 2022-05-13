@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.build(comment_params)
 		@comment.profile = current_user.profile
-		@commenters = @post.comments.select(:profile_id).where(profile_id: current_user.profile.following.ids).order(:created_at).distinct
+		@commenters = @post.comments.where(profile_id: current_user.profile.following.ids).order(:created_at).distinct
 
 		respond_to do |format|
 	      if @comment.save  
