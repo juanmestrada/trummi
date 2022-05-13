@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
 
   def index
     
-    @conversations = current_user.profile.authored_conversations.last_author_pm.order("personal_messages.created_at DESC").paginate(page: params[:page], per_page: 15).or(current_user.profile.received_conversations.last_receiver_pm.order("personal_messages.created_at DESC").paginate(page: params[:page], per_page: 15))
+    @conversations = current_user.profile.authored_conversations.last_author_pm.group("conversations.id").order("personal_messages.created_at DESC").paginate(page: params[:page], per_page: 15).or(current_user.profile.received_conversations.last_receiver_pm.group("conversations.id").order("personal_messages.created_at DESC").paginate(page: params[:page], per_page: 15))
     
     # @conversations = Conversation.where(author_id: current_user.profile.id).includes(:latest_pm).where(personal_messages: {author_destroy: false}).order("personal_messages.created_at DESC").distinct.paginate(page: params[:page], per_page: 4).or(Conversation.where(receiver_id: current_user.profile.id).includes(:latest_pm).where(personal_messages: {receiver_destroy: false}).order("personal_messages.created_at DESC").distinct.paginate(page: params[:page], per_page: 4))
     

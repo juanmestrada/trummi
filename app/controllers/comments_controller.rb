@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
 	def destroy
 		@comment = @post.comments.find(params[:id])
-		@commenters = @post.comments.select(:profile_id).where(profile_id: current_user.profile.following.ids).distinct
+		@commenters = @post.comments.where(profile_id: current_user.profile.following.ids).distinct
 		@comment.destroy
 
 		respond_to do |format|
