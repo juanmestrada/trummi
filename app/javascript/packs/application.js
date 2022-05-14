@@ -258,9 +258,12 @@ $( document ).on('turbolinks:load', function() {
                 
                 modalInstance.hide(); 
                 
-            }).on("ajax:error", () => {
-                
+            }).on("ajax:error", (event) => {
+                var detail = event.detail;
+                var data = detail[0], status = detail[1],  xhr = detail[2];
                 console.log("There was an error.");
+                console.log("Error: ", detail);
+                console.log("Data: ", data);
 
             });
              

@@ -36,7 +36,7 @@ class PostsController < ApplicationController
         format.html
         format.js { flash.now[:notice] = "Your post has been sent." }
       else
-        format.js { render status: 400 }
+        format.js { render json: @post.errors.full_messages, status: 422 }
       end
     end
   end
