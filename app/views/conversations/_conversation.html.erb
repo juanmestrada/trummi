@@ -16,19 +16,22 @@
           <div class="col-12 p-0">
             <p class="m-0">
               <strong><%= conversation.with(current_user.profile).name %></strong>
-              <span class="float-end text-secondary"><%= time_ago_in_words(conversation.personal_messages.last.created_at) %> ago</span>
+              <span class="float-end text-secondary"><%= time_ago_in_words(conversation.latest_pm.created_at) %> ago</span>
             </p>
           </div>
           <div class="col-12 p-0">
             <p class="card-text text-secondary">
-              <%= sanitize conversation.personal_messages.last.body %> <br>
+              <%= sanitize conversation.latest_pm.body %> <br>
             </p> 
           </div>
         <% end %>
       </div>
 
       <div class="col-1 ma">
-        <i class="fas fa-ellipsis-v float-end rounded-circle" data-behavior='convset'></i>
+        <div class="el-dr-btn float-end" data-behavior='convset'>
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+        
       </div>
     </div>
   </div>

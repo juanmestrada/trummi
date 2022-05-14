@@ -7,11 +7,6 @@ class Conversation < ApplicationRecord
 
   validates :author, uniqueness: {scope: :receiver}
 
-
-  # scope :participating, -> (user) do
-  #   where("(conversations.author_id = ? OR conversations.receiver_id = ?)", user.id, user.id)
-  # end
-
   scope :last_active_pm, -> (user) do
     joins(:personal_messages)
     where("(personal_messages.conversation.author = ? AND personal_messages.author_destroy = ? OR personal_messages.conversation.receiver = ? AND personal_messages.receiver_destroy = ?)", user, false, user, false)
@@ -39,13 +34,6 @@ class Conversation < ApplicationRecord
     .having('personal_messages.id = (SELECT MAX(personal_messages.id))')
     .where('personal_messages.author_destroy = false')
   }
-
-  # scope :last_receiver_pm, -> {
-  #   joins(:personal_messages)
-  #   .group('personal_messages.conversation_id')
-  #   .where('personal_messages.receiver_destroy = false')
-  #   .having('personal_messages.created_at = (SELECT MAX(personal_messages.created_at))')
-  # }
 
   scope :last_receiver_pm, -> {
     joins(:personal_messages)

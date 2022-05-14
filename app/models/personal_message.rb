@@ -4,12 +4,12 @@ class PersonalMessage < ApplicationRecord
 
   validates :body, presence: true, length: { minimum: 1, maximum: 640, too_short: "Too short (minimum is 2 characters)", too_long: "Too long (maximum is 560 characters)" }
 
+  scope :most_recent, -> { joins(
+    "INNER JOIN (
+      SELECT DISTINCT ON (conversation_id) conversation_id,id FROM personal_messages ORDER BY conversation_id,updated_at DESC,id
+    ) most_recent ON (most_recent.id=personal_messages.id)"
+  )}
   
-  # after_create_commit do
-  #   conversation.touch
-  #   NotificationBroadcastJob.perform_later(self)
-  # end
-
   def receiver
     if conversation.author == conversation.receiver || conversation.receiver == profile
       conversation.author
@@ -19,22 +19,8 @@ class PersonalMessage < ApplicationRecord
   end
 
   def self.latest_pm_for_conversation
-    # latest_pm_ids = select("max(id)").group(:conversation_id)
-    # where(id: latest_pm_ids)
-    group(:conversation_id)
-    having('id = (SELECT MAX(id))')
+    latest_pm_ids = select("max(id)").group(:conversation_id)
+    where(id: latest_pm_ids)
   end
 
-
-  # def self.latest_author_pm
-  #   group(:conversation_id)
-  #   having('id = (SELECT MAX(id))')
-  #   where(author_destroy: false)
-  # end
-
-  # def self.latest_receiver_pm
-  #   group(:conversation_id)
-  #   having('id = (SELECT MAX(id))')
-  #   where(receiver_destroy: false)
-  # end
 end

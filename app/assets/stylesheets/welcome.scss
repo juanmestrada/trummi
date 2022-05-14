@@ -1,17 +1,4 @@
-// .welcome-overlay {
-// 	position: fixed;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100vw;
-// 	height: 100vh;
-// 	font-family: 'Roboto', sans-serif;
-// 	z-index: 999;
-// 	background: #f2efff;
-// 	// 
 
-// 	// 
-// }
-// pasted carousel
 .well {
 	position: fixed;
 	top: 0;
@@ -22,7 +9,6 @@
 	background-color: #f2efff;
 	padding: 0;
 	transition: 1s cubic-bezier(0.5, 0, 0.5, 1);
-	// background-color: yellow;
 	// height: 100vh;
 	overflow-y: scroll;
 	// scroll-snap-type: y mandatory;
@@ -34,7 +20,6 @@
 
 .panel {
 	position: relative;
-	// height: 100%;
 	height: 100vh;
 	max-height: -webkit-fill-available;
 	font-size: 10vmin;
@@ -60,7 +45,6 @@
 	}
 }
 #Welcome{
-	// background-color: blue;
 	.w_t-wr{
 		position: absolute;
 	    top: 50%;
@@ -109,9 +93,7 @@
 }
 
 #Tags{
-	// background-color: teal;
 	.about_section{
-		transform: translateX(-25%);
     opacity: 0;
     transition: opacity 850ms ease-out, transform 900ms ease-out;
     img{
@@ -125,17 +107,14 @@
 		width: 100%;
 		overflow: hidden;
 		opacity: 0;
-		// transition: opacity 850ms ease-out;
 		transition: opacity 750ms cubic-bezier(.645, .045, .355, 1);
 	}
 	.p-cooking{
 		width: 45%;
 		position: absolute;
 		left: 5%;
-		// bottom: -5%;
 		bottom: -10px;
 		z-index: 5;
-		// transition: opacity 250ms ease-out, transform 1s ease-out;
 		transition: transform 1s ease-out;
 	}
 	.p-pottery{
@@ -145,7 +124,6 @@
 		bottom: 20%;
 		z-index: 4;
 		transform: translateX(-30px);
-		// transition: opacity 250ms ease-out, transform 1.5s ease-out;
 		transition: transform 1.5s ease-out;
 	}
 	.p-hiking{
@@ -154,7 +132,6 @@
 		right: -5%;
 		bottom: -30px;
 		z-index: 4;
-		// transition: opacity 250ms ease-out, transform 2s ease-out;
 		transition: transform 1.25s ease-out;
 	}
 	.p-guitar{
@@ -164,7 +141,6 @@
 		bottom: 35%;
 		z-index: 3;
 		transform: scale(.8);
-		// transition: opacity 250ms ease-out, transform 1.5s ease-out;
 		transition: transform 1.5s ease-out;
 	}
 	.p-parachute{
@@ -173,13 +149,11 @@
 		right: -15%;
 		top: -5%;
 		z-index: 1;
-		// transition: opacity 250ms ease-out, transform 1.5s ease-out;
 		transition: transform 2.5s ease-out;
 	}
 }
 #Tags.inView{
 	.about_section{
-		transform:translateX(0);
 		opacity: 1;
 	}
 	.tag_img_wr{
@@ -203,7 +177,6 @@
 }
 
 #Self-love{
-	// background-color: salmon;
 	background-color: #bbc0ff;
 	.about_img{
 		order: 1;
@@ -281,7 +254,6 @@
 	}
 }
 #React{
-	// background-color: red;
 	.about_section{
 		opacity: 0;
     transition: opacity 1s ease-out;

@@ -31,7 +31,12 @@
 
   // profile dropdown [mobile]
   if ($('.pp-d')[0]) {
-    $('.pp-d .post-dropdown').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @personal_message.receiver} %>');
+    $('.pp-d .post-dropdown').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @personal_message.receiver } %>');
+  }
+
+  // Update existing offcanvas
+  if ($('#offcanvasMobile')[0] && $('#offcanvasMobile').hasClass('show')) {
+    $('#offcanvasMobile .offcanvas-body').html('<%= j render partial: "profiles/profile_menu", locals: { profile: @personal_message.receiver } %>');
   }
   
 <% else %>

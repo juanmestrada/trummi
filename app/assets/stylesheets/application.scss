@@ -56,14 +56,12 @@ input, select, textarea {
 	outline: none !important;
 }
 
-input:focus {
+input:focus:not([type='submit']) {
 	// outline: none !important;
 	box-shadow: 0 0 5px rgba(106,123,255,.5);
 }
 
 input[type=text]:focus, textarea:focus {
-  // box-shadow: none !important;
-  // outline: none !important;
   	box-shadow: 0 0 5px rgba(106,123,255,1);
 }
 
@@ -723,8 +721,6 @@ i{
 	  min-height: 50px;
 }
 .cancel-btn{
-	// background-color: #fd8a9f;
-	// color: white;
 	background-color: rgba(0, 0, 0, 0);
   color: #657786;
   border: 1px solid #cfd9de !important;
@@ -733,19 +729,12 @@ i{
   padding-right: 1em;
   font-weight: 600;
   min-height: 36px;
-    &:hover{
-		background-color: #f5f3fc;
-	}
 }
 
 .cancel-btn:focus{
-	background-color: #eeebff;
+	// background-color: #eeebff;
 	border: 1px solid #cfd9de !important;
 }
-// input[type="button"]{
-// 	outline: none;
-// 	border: 0;
-// }
 
 .tooltip{
 	position: relative;
@@ -977,14 +966,7 @@ textarea{
       background-color: rgba(238,235,255,.75);
     }
   }
-  .confirm-menu-body{
-		.confirm-item{
-			border-top: 1px solid #e0e1ff !important;
-			&:hover {
-				background-color: rgba(225, 222, 243, .85);
-			}
-		}
-	}
+  
 }
 
 @media screen and (min-width:960px){
@@ -1032,6 +1014,20 @@ textarea{
 			justify-content: center;
 		}
 	}
+	.cancel-btn{
+		&:hover{
+			background-color: #f5f3fc;
+		}
+	}
+
+	.confirm-menu-body{
+		.confirm-item{
+			border-top: 1px solid #e0e1ff !important;
+			&:hover {
+				background-color: #eeebff;
+			}
+		}
+	}
 }
 
 @media (min-width:960px) and (max-width: 1400px){
@@ -1042,8 +1038,6 @@ textarea{
 	
 }
 
-
-// @media screen and (max-width:639px) {
 @media screen and (max-width:959px) {
 
 	html, body{
@@ -1255,6 +1249,9 @@ textarea{
 		font-size: 16px;
 		// line-height: 1.5rem;
 		// padding: 5px 8px;
+		&:active{
+			background-color: #f5f3fc;
+		}
 	}
 	#postData{
 		.formtext{
@@ -1277,6 +1274,9 @@ textarea{
 	.confirm-menu-body{
 		.confirm-item{
 			border-top: 1px solid rgb(239, 243, 244) !important;
+			&:active{
+				background-color: #eeebff;
+			}
 		}
 	}
 }

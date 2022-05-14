@@ -49,7 +49,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-left: 10px;
     }
     // &:active{
     //   opacity: 1 !important;
@@ -60,6 +59,7 @@
     font-size: 18px;
     width: 20px !important;
     text-align: left;
+    margin-right: 10px;
   }
 }
 
@@ -277,8 +277,13 @@ i{
 }
 .fa-ellipsis-v{
   opacity: .7;
-  color: #657786;
-  transition: all 350ms ease;
+}
+
+.el-dr-btn{
+  color: inherit;
+  border-radius: 50%;
+  line-height: 1;
+  transition: all .2s;
 }
 
 .svg-inline--fa{
@@ -502,16 +507,6 @@ i{
   .i-wrapper{
     &:hover{
       background-color: rgba(238,235,255, .5);
-      // img{
-      //   filter: invert(78%) sepia(28%) saturate(726%) hue-rotate(202deg) brightness(102%) contrast(102%);
-      // }
-    }
-  }
-  .fa-ellipsis-v{
-    &:hover{
-      background-color: rgba(238,235,255, .5);
-      color: #6a7bff;
-      opacity: 1 !important;
     }
   }
 }
@@ -533,16 +528,21 @@ i{
     min-height: 47px;
   }
 
+  .el-dr-btn{
+    &:hover{
+      background-color: rgba(238,235,255, .55);
+    }
+  }
+
 }
 
 @media screen and (max-width: 959px) {
-  
     
   .dropdown-item{
     
     a,button{
       font-size: 20px;
-      padding: 18px 20px;
+      padding: 16px 20px;
       i{
         height: 20px;
         width: 26px;
@@ -593,17 +593,17 @@ i{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     padding-bottom: 15px;
-    &:before{
-      background: #dadce0;
-      content: "";
-      width: 32px;
-      height: 8px;
-      position: absolute;
-      left: 50%;
-      top: 12px;
-      transform: translate(-50%, 0);
-      border-radius: 4px;
-    }
+    // &:before{
+    //   background: #dadce0;
+    //   content: "";
+    //   width: 32px;
+    //   height: 8px;
+    //   position: absolute;
+    //   left: 50%;
+    //   top: 12px;
+    //   transform: translate(-50%, 0);
+    //   border-radius: 4px;
+    // }
     
   }
 
@@ -613,11 +613,9 @@ i{
     }
   }
 
-  .fa-ellipsis-v{
+  .el-dr-btn{
     &:active{
-      background-color: rgba(238,235,255, .5);
-      color: #6a7bff;
-      opacity: 1 !important;
+      background-color: rgba(238,235,255, .75);
     }
   }
 
@@ -630,6 +628,22 @@ i{
   .m-no-sel{
     pointer-events: none;
     touch-action: none;
+  }
+
+}
+
+@media screen and (min-width: 375px) {
+
+  .el-dr-btn{
+    padding: 6px 14px;
+  }
+
+}
+
+@media screen and (max-width: 374px) {
+
+  .el-dr-btn{
+    padding: 3px 11px;
   }
 
 }
