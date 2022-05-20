@@ -4,7 +4,8 @@ class RelationshipsController < ApplicationController
 	before_action :check_isdisabled
 
 	def index	
-		@profiles = Profile.notdisabled.where(id: current_user.profile.following.ids).order(:name).paginate(page: params[:page], per_page: 15)
+		# @profiles = Profile.notdisabled.where(id: current_user.profile.following.ids).order(:name).paginate(page: params[:page], per_page: 1)
+		@relationships = current_user.profile.following.where(isdisabled: false).order(:name).paginate(page: params[:page], per_page: 15)
 	end
 
 	def create

@@ -1,23 +1,23 @@
 class Profile < ApplicationRecord
 	# validates :username, presence: true, length: { minimum: 3, maximum: 15, too_short: "Too short (minimum is 3 characters)", too_long: "Too long (maximum is 15 characters)"}, uniqueness: { case_sensitive: false }
-	validates :name, presence: true, length: { minimum: 2, maximum: 30, too_short: "Too short (minimum is 2 characters)", too_long: "Too long (maximum is 30 characters)"}
-	validates :headline, presence: true, length: { minimum: 2, maximum: 150, too_short: "Too short (minimum is 2 characters)", too_long: "Too long (maximum is 140 characters)"}
-	validates :about, presence: true, length: { minimum: 10, maximum: 650, too_short: "Too short (minimum is 10 characters)", too_long: "Too long (maximum is 650 characters)"}
-	validates :searchingfor, presence: true, length: { minimum: 10, maximum: 650, too_short: "Too short (minimum is 10 characters)", too_long: "Too long (maximum is 650 characters)"}
+	validates :name, presence: { message: "Name can't be blank" }, length: { minimum: 2, maximum: 30, too_short: "Name is too short (minimum is 2 characters)", too_long: "Name is too long (maximum is 30 characters)"}
+	validates :headline, presence: { message: "Headline can't be blank" }, length: { minimum: 2, maximum: 150, too_short: "Headline is too short (minimum is 2 characters)", too_long: "Headline is too long (maximum is 140 characters)"}
+	validates :about, presence: { message: "About can't be blank" }, length: { minimum: 10, maximum: 650, too_short: "About is too short (minimum is 10 characters)", too_long: "About is too long (maximum is 650 characters)"}
+	validates :searchingfor, presence: { message: "Searching for can't be blank" }, length: { minimum: 10, maximum: 650, too_short: "Searching for is too short (minimum is 10 characters)", too_long: "Searching for is too long (maximum is 650 characters)"}
 	# validates :location, presence: true
-	validates :religion, presence: true, unless: :user_is_child
-	validates :education, presence: true, unless: :user_is_child
-	validates :ethnicity, presence: true, unless: :user_is_child
-	validates :relationship, presence: true, unless: :user_is_child
-	validates :sexuality, presence: true, unless: :user_is_child
-	validates :height, presence: true, unless: :user_is_child
-	validates :bodytype, presence: true, unless: :user_is_child
-	validates :eyecolor, presence: true, unless: :user_is_child
-	validates :haircolor, presence: true, unless: :user_is_child
-	validates :living, presence: true, unless: :user_is_child
-	validates :kids, presence: true, unless: :user_is_child
-	validates :smoking, presence: true, unless: :user_is_child
-	validates :drinking, presence: true, unless: :user_is_child
+	validates :religion, presence: { message: "Religion can't be blank" }, unless: :user_is_child
+	validates :education, presence: { message: "Education level can't be blank" }, unless: :user_is_child
+	validates :ethnicity, presence: { message: "Ethnicity can't be blank" }, unless: :user_is_child
+	validates :relationship, presence: { message: "Relationship status can't be blank" }, unless: :user_is_child
+	validates :sexuality, presence: { message: "Sexual orientation can't be blank" }, unless: :user_is_child
+	validates :height, presence: { message: "Height can't be blank" }, unless: :user_is_child
+	validates :bodytype, presence: { message: "Body type can't be blank" }, unless: :user_is_child
+	validates :eyecolor, presence: { message: "Eye color can't be blank" }, unless: :user_is_child
+	validates :haircolor, presence: { message: "Hair color can't be blank" }, unless: :user_is_child
+	validates :living, presence: { message: "Living situation can't be blank" }, unless: :user_is_child
+	validates :kids, presence: { message: "Have kids can't be blank" }, unless: :user_is_child
+	validates :smoking, presence: { message: "Smoking can't be blank" }, unless: :user_is_child
+	validates :drinking, presence: { message: "Drinking can't be blank" }, unless: :user_is_child
 	# validates :language, presence: true
 	# validates :verified, presence: true
 	# validates :private, presence: true

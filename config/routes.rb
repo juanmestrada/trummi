@@ -168,7 +168,7 @@ Rails.application.routes.draw do
 
 	get :matches, action: :index, controller: :tags
 	get :search, controller: :tags
-	
+	get :interstitial, action: :screen, controller: :interstitials
 	# mount ActionCable.server => '/cable'
 	
 	get '*path' => redirect('/')

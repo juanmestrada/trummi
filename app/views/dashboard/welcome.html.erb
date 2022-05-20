@@ -19,14 +19,14 @@
 
     <div class="about_section">
       <p class="w-st">Be yourself</p>
-      <p class="w-ti">Social media has become a place where users feel pressured to be perfect. We know perfect doesn't exist, that's why you're encouraged to be the real you here at Trummi. Trummi offers a safe place where everyone can be themselves.</p>
+      <p class="w-ti">Social media has become a place where users feel pressured to be perfect. We know perfect doesn't exist, that's why you're encouraged to be the true you here at Trummi. Trummi offers a safe place where everyone can be themselves.</p>
     </div>
   </div>
 
   <div class="panel d-flex" id="Tags">
     <div class="about_section">
       <p class="w-st">Meet others just like you</p>
-      <p class="w-ti">Use tags to describe yourself, your interests and ideas, or anything important to you. Trummi matches users when they share one or more tags so you're guaranteed to meet others you have things in common with!</p>
+      <p class="w-ti">Use tags to describe yourself, your interests and ideas, or anything important to you. Trummi matches you with other users that have the same tags so you're guaranteed to meet people you have things in common with!</p>
 
       <%= image_tag('tags.png', class: 'p-tags') %>
     </div>
@@ -82,7 +82,7 @@
       <% elsif user_signed_in? && current_user.profile == nil %>
         <%= link_to "Get started", new_profile_path, class: 'post-btn' %>
       <% else %>
-        <%= link_to "Get started", new_user_session_path, class: 'post-btn' %>
+        <%= link_to "Get started", new_user_registration_path, class: 'post-btn' %>
       <% end %>
     </div>
 

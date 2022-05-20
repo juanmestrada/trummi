@@ -34,8 +34,7 @@ class ProfilesController < ApplicationController
   	@profile.age = current_user.age(current_user.dob)
 
   	if @profile.save
-  		flash[:notice] = "Next you need tags."
-      redirect_to new_tag_path
+      render "interstitials/screen", locals: { location: 'tags/interstitial' }
     else
       render 'new'
     end

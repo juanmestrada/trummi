@@ -1,8 +1,8 @@
-$('.fol-bloc-results').append('<%= j render(@profiles) %>');
-<% if @profiles.next_page %>
-	$('.pagination-more').attr('href', '<%= relationships_path(page: @profiles.next_page) %>')
+$('.fol-bloc-results').append('<%= j render partial: "relationship", collection: @relationships %>');
+<% if @relationships.next_page %>
+	$('.pagination-more').removeClass('disabled');
+	$('.pagination-more').attr('href', '<%= relationships_path(page: @relationships.next_page) %>')
 	$('.pagination-more').html("<i class='fas fa-plus-circle'></i> <span>More</span>");
 <% else %>
 	$('.pagination-more').remove();
 <% end %>
-<% sleep 1 %>

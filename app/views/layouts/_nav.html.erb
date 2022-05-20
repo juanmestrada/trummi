@@ -88,6 +88,13 @@
                   <span>My profile</span>
                 <% end %>
               <% end %>
+
+              <% if !current_user.profile.isdisabled %>
+                <%= button_to new_tag_path, method: :get, form_class: "dropdown-item p-0" do %>
+                  <i class="fas fa-hashtag"></i>
+                  <span>My tags</span>
+                <% end %>
+              <% end %>
             
               <%= button_to edit_profile_path(current_user.profile.id), method: :get, form_class: "dropdown-item p-0" do %>
                 <i class="fas fa-edit"></i>

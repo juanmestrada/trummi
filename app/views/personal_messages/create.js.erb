@@ -23,6 +23,12 @@
   if ($('.popover')[0]) {
     $('.popover .popover-body').html('<%= j render partial: "components/profile_card", locals: {p: @personal_message.receiver} %>');
   }
+  
+  // new message(relationships index) view
+  if ($('.rel-new-msg')[0]) {
+    $('[data-rel-profile="<%= @personal_message.receiver.id %>"] .profile-message').removeAttr('data-remote');
+    $('[data-rel-profile="<%= @personal_message.receiver.id %>"] button').removeAttr('data-bs-toggle');
+  }
 
   // comment views: _comment partial
   if ($('#comments')[0]) {

@@ -1,6 +1,6 @@
 <% content_for :title, "New Message - Trummi" %>
 
-<div id="fol-bloc-cont">
+<div id="fol-bloc-cont" class="rel-new-msg">
 
 	<div class="mb-2 cont-header" align="center">
 		<div class="cont-header-profile">
@@ -13,17 +13,16 @@
 		
 		<div class="cont-header-title">New Message</div>
 	</div>
-	
 
 	<div class="row fol-bloc-results">
 
-		<%= render @profiles %>		 
-
+		<%= render partial: "relationship", collection: @relationships %>
+			 
 	</div>
 
 	<div class="pagination-wr">
-		<% if @profiles.next_page %>
-			<%= link_to relationships_path(page: @profiles.next_page), class: "pagination-more" do %>
+		<% if @relationships.next_page %>
+			<%= link_to relationships_path(page: @relationships.next_page), class: "pagination-more" do %>
 				<i class='fas fa-plus-circle'></i> 
 				<span>More</span>
 			<% end %>

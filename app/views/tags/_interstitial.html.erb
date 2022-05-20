@@ -1,0 +1,76 @@
+<div id="tagCarousel" class="carousel slide carousel-fade " data-bs-touch="false" data-bs-interval="false">
+	<div class="carousel-inner h-100 d-flex">
+		<div class="carousel-item text-center bg-white d-flex flex-column car-i-p active">
+			<div class="carousel-items-wrapper">
+				<div class="w-100 mb-5">
+					<div class="mb-5">
+						<%= image_tag("tags-background.png", class: "car-img-w") %>
+					</div>
+
+					<h5 class="fw-bold">Tags that tell the world who you are</h5>
+					<p>Tags can be used to describe you, express opinions and ideas, or tell others what's important to you.</p>
+				</div>
+				
+				<div class="car-btn-wr justify-content-end">
+					<button class="car-btn-next tr-pri-c fw-bold" type="button" data-bs-target="#tagCarousel" data-bs-slide="next">
+					    <span class="">Next</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item text-center bg-white d-flex flex-column car-i-p">
+			<div class="carousel-items-wrapper">
+				<div class="w-100 mb-5">
+					<div class="mb-5">
+						<%= image_tag("meet-others.png", class: "car-img-w") %>
+					</div>
+
+					<h5 class="fw-bold">Match with others using the same tags</h5>
+
+					<p class="">By simply being you, you'll be matched with people you already have things in common with.</p>
+				</div>
+				
+				<div class="car-btn-wr justify-content-between">
+					<button class="car-btn-prev text-secondary fw-bold" type="button" data-bs-target="#tagCarousel" data-bs-slide="prev">
+					    <span class="">Back</span>
+					</button>
+
+					<button class="car-btn-next tr-pri-c fw-bold" type="button" data-bs-target="#tagCarousel" data-bs-slide="next">
+					    <span class="">Next</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item bg-white d-flex flex-column car-i-p">
+			<div class="carousel-items-wrapper">
+				<div class="w-100 mb-5 fw-bold">
+					<%= image_tag("trummi_logo.png", class: "mb-4 d-block m-auto") %>
+					<p class="mb-3">Trummi was created in an effort to give everyone a safe place where they feel free to be themselves, away from the negative aspects of other social media platforms.</p>
+
+					<p class="mb-5">We can't do this alone. The only way to keep Trummi safe for everyone and work towards creating a new normal for what social media should be, we ask everyone to follow these basic rules.</p>
+
+					<p class="mb-5">Be positive.</p>
+
+					<p class="mb-5">Be kind.</p>
+
+					<p class="mb-5">Be safe.</p>
+
+					<p class="mb-5">Be the <span class="tr-pri-c fw-bold">true</span> you.</p>
+				</div>
+
+				<div class="car-btn-wr justify-content-between">
+					<button class="car-btn-prev text-secondary fw-bold h-100" type="button" data-bs-target="#tagCarousel" data-bs-slide="prev">
+					    <span class="">Back</span>
+					</button>
+					
+					<%= button_to new_tag_path, method: :get, class: "car-btn-next post-btn" do %>
+				        <span class="">I Agree</span> 
+				    <% end %>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+ 	 
+</div>

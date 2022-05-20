@@ -81,15 +81,15 @@ $( document ).on('turbolinks:load', function() {
                 var items = data.map( function(notification) {
                     var pimg;
                     if (notification.actorimg == undefined || notification.actorimg == null){
-                        pimg = ""
+                        pimg = "<img class='notification-actor me-1' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'>"
                     }else{
                         pimg = "<img class='notification-actor me-1' src='" + notification.actorimg + "'>"
                     }
 
                     if (notification.action == "messaged"){
-                        return "<li class='dropdown-item'><a data-notifiable-id=" + notification.notifiable_id + " href='" + notification.url + "'>" + pimg + " " + "<span>" + "@" + notification.actor + " " + notification.action + " " + "you" + "</span>" +  "</a></li>";
+                        return "<li class='dropdown-item'><a data-notifiable-id=" + notification.notifiable_id + " href='" + notification.url + "'>" + pimg + " " + "<span>" + notification.actor + " " + notification.action + " " + "you" + "</span>" +  "</a></li>";
                     }else{
-                        return "<li class='dropdown-item'><a data-notifiable-id=" + notification.notifiable_id + " href='" + notification.url + "'>" + pimg + " " + "<span>" + "@" + notification.actor + " " + notification.action + " " + notification.notifiable.type + "</span>" +  "</a></li>";
+                        return "<li class='dropdown-item'><a data-notifiable-id=" + notification.notifiable_id + " href='" + notification.url + "'>" + pimg + " " + "<span>" + notification.actor + " " + notification.action + " " + notification.notifiable.type + "</span>" +  "</a></li>";
                     }
                 })
 
@@ -194,9 +194,9 @@ $( document ).on('turbolinks:load', function() {
 
         postModal.addEventListener('show.bs.modal', function (e) {
 
-            if (e.relatedTarget.getAttribute("data-istype") == "confirmation") {
+            if (e.relatedTarget && e.relatedTarget.getAttribute("data-istype") == "confirmation") {
                 
-                postModal.querySelector('.modal-dialog').classList.add("modal-sm");
+                postModal.querySelector('.modal-dialog');
                 
             }
 
@@ -208,7 +208,7 @@ $( document ).on('turbolinks:load', function() {
             const modalForm = $(this).find('form');
 
             // type confirmation
-            if (event.relatedTarget.getAttribute("data-istype") == "confirmation") {
+            if (event.relatedTarget && event.relatedTarget.getAttribute("data-istype") == "confirmation") {
                 
                 modalInstance._config.backdrop = "static";
 
@@ -379,7 +379,6 @@ $( document ).on('turbolinks:load', function() {
         });
 
     })
-
 
     // PROFILE POPOVER
     $('.app-container').on('mouseenter', '[data-bs-toggle="popover-prof"]', function(){  
