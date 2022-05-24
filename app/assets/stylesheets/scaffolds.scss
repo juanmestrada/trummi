@@ -552,14 +552,16 @@ i{
         line-height: 1.2;
       }
       &:focus {
-        background-color: unset;
+        // background-color: unset;
       }
       &:active {
-        background-color: unset;
+        // background-color: unset;
+        background-color: #f2f6ff;
       }
-      &:focus:active {
-        background-color: #eeebff;
-      }
+      // &:focus:active {
+      //   // background-color: #eeebff;
+      //   background-color: #f2f6ff;
+      // }
     }
   }
 

@@ -196,7 +196,7 @@ $( document ).on('turbolinks:load', function() {
 
             if (e.relatedTarget && e.relatedTarget.getAttribute("data-istype") == "confirmation") {
                 
-                postModal.querySelector('.modal-dialog');
+                // postModal.querySelector('.modal-dialog').classList.add("modal-sm");
                 
             }
 

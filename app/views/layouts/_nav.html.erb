@@ -55,7 +55,7 @@
         <!-- Profile Dropdown -->
         <li class="nav-item dropdown dprof mdrop">
           <!-- desktop button -->
-            <a class="nav-link post-desk-menu" role="button" id="Profilemenu" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <a class="nav-link post-desk-menu align-bottom" role="button" id="Profilemenu" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
               <div class="header-img mpi">
                 <% if current_user.profile.image1? %>
                   <%= image_tag(current_user.profile.image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
@@ -67,7 +67,7 @@
             </a>
           <!--  -->
           <!-- mobile button -->
-            <a class="nav-link post-mob-menu of-pr-men" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMobile" aria-expanded="false">
+            <a class="nav-link post-mob-menu of-pr-men align-bottom" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMobile" aria-expanded="false">
               <div class="header-img mpi">
                 <% if current_user.profile.image1? %>
                   <%= image_tag(current_user.profile.image1.url(:thumb), height: "100%", width: "100%", draggable: "false", class: "card-img-top no-sel") %>
