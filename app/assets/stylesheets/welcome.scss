@@ -64,6 +64,16 @@
 	  	-webkit-animation: paragraph 4.25s;
   		animation: paragraph 4.25s;
   		margin-bottom: 0;
+  		.welcome-hero-b{
+  			display: inline-flex;
+  			width: 0;
+  			overflow: hidden;
+  			visibility: hidden;
+				transform: scale(0);
+  			transition: all 650ms ease-out;
+  			transition-delay: 5s;
+  			justify-content: center;
+  		}
 		}
 	}
 	.wo-next{
@@ -85,6 +95,16 @@
 }
 
 #Welcome.inView{
+	.w_t-wr{
+		.w-ti{
+			.welcome-hero-b{
+				transform: scale(1);
+				margin-left: 6px;
+				margin-right: 6px;
+				visibility: visible;
+			}
+		}
+	}
 	.wo-next{
 		opacity: 1;
 	}
@@ -642,6 +662,16 @@
 
 @media (min-width: 960px) {
 
+	#Welcome.inView{
+		.w_t-wr{
+			.w-ti{
+				.welcome-hero-b{
+					width: 58px;
+				}
+			}
+		}
+	}
+
 	#Welcome-intro{
 		.intro_about{
 			width: 75%;
@@ -702,19 +732,6 @@
 		}
 	}
 
-	#Welcome .w_t-wr{
-		.w-st{
-			font-size: 18vm;
-			font-size: 18vmin;
-		}
-		.w-ti{
-			font-size: 5vm;
-			font-size: 5vmin;
-		}
-	}
-
-	
-
 	.getstarted{
 		.about_section{
 			padding: 1em;
@@ -729,6 +746,27 @@
 }
 
 @media (max-width: 959px) {
+
+	#Welcome{
+		.w_t-wr{
+			.w-st{
+				font-size: 70px;
+			}
+			.w-ti{
+				font-size: 18px;
+			}
+		}
+	}
+
+	#Welcome.inView{
+		.w_t-wr{
+			.w-ti{
+				.welcome-hero-b{
+					width: 45px;
+				}
+			}
+		}
+	}
 
 	#Welcome-intro{
 		.intro_about{
@@ -747,16 +785,6 @@
 
 @media (min-width:640px) and (max-width:1024px) and (orientation: portrait)  {
 
-	#Welcome .w_t-wr{
-		.w-st{
-			font-size: 14vm;
-			font-size: 14vmin;
-		}
-		.w-ti{
-			font-size: 4vm;
-			font-size: 4vmin;
-		}
-	}
 	#Self-love{
 		.about_section{
 	  	order: 1;
@@ -825,10 +853,8 @@
 	#Welcome .w_t-wr{
 		height: 140px;
 		.w-st {
-		  font-size: 4rem;
 		}
 		.w-ti{
-			font-size: 18px;
 			min-height: 45px;
 		}
 	} 
@@ -948,8 +974,4 @@
 			order: 1;
 		}
 	}
-}
-
-@media (max-width:567px) {
-
 }
